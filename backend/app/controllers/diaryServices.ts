@@ -1,5 +1,5 @@
-import { DiaryEntry, newDiaryEntry, NoComment} from '../types'
-import diaryData from './diaries.json'
+import { DiaryEntry, newDiaryEntry, NoComment} from '../interfaces/types'
+import diaryData from '../services/diaries.json'
 
 const diaries: DiaryEntry[] = diaryData as DiaryEntry[]
 
