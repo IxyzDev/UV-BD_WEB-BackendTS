@@ -5,7 +5,7 @@ export async function connect(): Promise<Pool> {
         host: 'localhost',
         user: 'root',
         password: '7827',
-        database: 'proyectoreact',
+        database: 'odp',
         connectionLimit: 10
     });
     return connection;
