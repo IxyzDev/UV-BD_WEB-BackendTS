@@ -1,6 +1,6 @@
 import express from 'express'
 
-import * as publicationController from '../controllers/publicationController'
+import * as publicationController from '../controllers/_publicationController'
 
 const router = express.Router()
 

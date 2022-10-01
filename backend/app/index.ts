@@ -1,21 +1,29 @@
-import express from 'express'
+import express from 'express';
+const app = express();
+const PORT = 3000;
+//import db from './models';
+const db = require('./models')
 
-import indexRoutes from './routes/index.routes'
-import publicationRoutes from './routes/publication.routes'
+//importar jsn con prefabs
+// import {users} from './seeders/users.ts';
 
-const app = express( )
-app.use(express.json()) // middleware que transforma la req.body a un json
+import indexRoutes from './routes/_index.routes'
+import publicationRoutes from './routes/_publication.routes'
 
-const PORT = 3000
+db.sequelize.sync().then(()=> {
+  app.use(express.json()) // middleware que transforma la req.body a un json
 
-app.get('/ping', (_req, res) => {
-  console.log('Pinged')
-  res.send('pong')
-})
+  app.get('/ping', (_req, res) => {
+    console.log('Pinged')
+    res.send('pong')
+  })
 
-app.use('/api/diaries', indexRoutes)
-app.use('/publication', publicationRoutes )
+  app.use('/api/diaries', indexRoutes)
+  app.use('/publication', publicationRoutes )
 
-app.listen(PORT, () => {
+  app.listen(PORT, () => {
   console.log(`Se escucha ${PORT}`)
 })
+})
+
+

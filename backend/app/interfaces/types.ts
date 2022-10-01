@@ -1,29 +1,37 @@
-export interface AdminAttributes {
+export interface AdminInterface {
   idAdmin: number,
   adminPassword: string
 }
 
-export interface User {
-  rut: number, //number or string?
-  name: string,
-  email: string,
+export interface UserInterface {
+  userRut: number, //number or string?
+  userName: string,
+  userEmail: string,
   userPassword: string,
   userAddress: string
 }
 
-export interface Publication {
+export interface PublicationInterface {
   idPublication: number,
   photo: string,
   price: number,
-  state: State,
+  state: EnumState,
   title: string,
   description: string,
-  userRut: number
 }
 
-export type PublicationWithoutUserRut = Omit<Publication, 'userRut'>
+export interface GestionInterface {
+  idGestion: string,
+  descripcionGestion: string
+}
 
-export enum State {
+export interface SeccionInterface {
+  idSeccion: number
+}
+
+export type PublicationWithoutUserRut = Omit<PublicationInterface, 'userRut'>
+
+export enum EnumState {
   Malo = 'malo',
   MedianamenteMalo = 'medio malo',
   Intermedio = 'intermedio',
@@ -32,7 +40,7 @@ export enum State {
 
 }
 
-export interface Product {
+export interface ProductInterface {
   idProducto: number,
   productName: string,
   brand: string,
@@ -46,7 +54,8 @@ export enum Type {
   Alcohol = 'Alcohol'
 }
 
-export interface Market {
+export interface MarketInterface {
+  idMarket: number,
   marketName: MarketName,
   marketAddress: string,
 }

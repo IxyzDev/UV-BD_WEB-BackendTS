@@ -1,7 +1,7 @@
 // DB
-import { connect } from '../config/database'
+import { connect } from '../config/_database'
 import { Request, Response } from 'express'
-import { Publication } from '../interfaces/types';
+import { PublicationInterface } from '../interfaces/types';
 
 export async function getPosts(_req: Request, res: Response): Promise<Response | void> {
     try {
@@ -15,9 +15,9 @@ export async function getPosts(_req: Request, res: Response): Promise<Response |
 }
 
 export async function createPost(req: Request, res: Response) {
-    const newPost: Publication = req.body;
+    const newPost: PublicationInterface = req.body;
     const conn = await connect();
-    await conn.query('INSERT INTO publicatione SET ?', [newPost]);
+    await conn.query('INSERT INTO PublicationInterfacee SET ?', [newPost]);
     res.json({
         message: 'New Post Created'
     });
@@ -41,7 +41,7 @@ export async function deletePost(req: Request, res: Response) {
 
 export async function updatePost(req: Request, res: Response) {
     const id = req.params.postId;
-    const updatePost: Publication = req.body;
+    const updatePost: PublicationInterface = req.body;
     const conn = await connect();
     await conn.query('UPDATE posts set ? WHERE id = ?', [updatePost, id]);
     res.json({

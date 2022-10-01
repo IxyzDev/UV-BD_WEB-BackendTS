@@ -1,6 +1,6 @@
 
 import { PublicationWithoutUserRut } from "../interfaces/types"
-import { getPosts } from "./publicationController"
+import { getPosts } from "./_publicationController"
 
 const Publicacions: PublicationWithoutUserRut[] = getPosts as PublicationWithoutUserRut[]
 
