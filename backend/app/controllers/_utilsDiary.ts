@@ -1,4 +1,4 @@
-import { newDiaryEntry, Visibility, Weather } from "../types";
+import { newDiaryEntry, Visibility, Weather } from "../interfaces/types";
 
 const parseComment = (commentFromRequest: any): string => {
     if (!isString(commentFromRequest)) { //typeof commentFromRequest != 'string'
