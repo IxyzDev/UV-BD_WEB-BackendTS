@@ -5,7 +5,7 @@ import {AdminInterface} from '../interfaces/types';
 module.exports = (sequelize: any, DataTypes: any) => {
   class Administrador extends Model<AdminInterface> 
   implements AdminInterface {
-    idAdmin!: number;
+    idAdmin!: string;
     adminPassword!: string;
     static associate(models: any) {
       Administrador.hasMany(models.Gestion)
@@ -15,7 +15,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idAdmin: {
       primaryKey: true,
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING,
     },
     adminPassword: {
       allowNull: false,
@@ -23,6 +23,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'Administrador',
   });
   return Administrador;
