@@ -5,7 +5,7 @@ import {ProductInterface, Type} from '../interfaces/types';
 module.exports = (sequelize: any, DataTypes: any) => {
   class Producto extends Model <ProductInterface> 
   implements ProductInterface {
-    idProducto!: number
+    idProducto!: string
     productName!: string
     brand!: string
     type!: Type
@@ -18,7 +18,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idProducto: {
       primaryKey: true,
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING,
     },
     productName: {
       allowNull: false,
@@ -34,6 +34,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'Producto',
   });
   return Producto;

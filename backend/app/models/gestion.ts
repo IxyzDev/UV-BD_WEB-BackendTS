@@ -14,18 +14,20 @@ module.exports = (sequelize: any, DataTypes: any) => {
   }
   Gestion.init({
     idGestion: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true
     },
     descripcionGestion: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'Gestion',
-  });
+  },
+);
   return Gestion;
 };

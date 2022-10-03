@@ -5,7 +5,7 @@ import {MarketInterface, MarketName} from '../interfaces/types'
 module.exports = (sequelize: any, DataTypes: any) => {
   class Market extends Model <MarketInterface> 
     implements MarketInterface{
-      idMarket!: number
+      idMarket!: string
       marketName!: MarketName
       marketAddress!: string
     static associate(models: any) {
@@ -16,7 +16,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idMarket: {
       primaryKey: true,
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING,
     },
     marketName: {
       allowNull: false,
@@ -28,6 +28,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'Market',
   });
   return Market;

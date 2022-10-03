@@ -1,11 +1,11 @@
 import {Model}  from 'sequelize';
 
-import {PublicationInterface, EnumState} from '../interfaces/types';
+import {PublicacionInterface, EnumState} from '../interfaces/types';
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Publicacion extends Model<PublicationInterface>
-  implements PublicationInterface {
-    idPublication!: number;
+  class Publicacion extends Model<PublicacionInterface>
+  implements PublicacionInterface {
+    idPublicacion!: string;
     photo!: string;
     price!: number;
     state!: EnumState;
@@ -19,10 +19,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
   }
   Publicacion.init({
-    idPublication: {
-      type: DataTypes.INTEGER,
+    idPublicacion: {
+      type: DataTypes.STRING,
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true
     },
     photo: {
@@ -49,6 +48,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'Publicacion',
   });
   return Publicacion;
