@@ -1,29 +1,29 @@
 export interface AdminInterface {
-  idAdmin: string,
+  idAdmin: string
   adminPassword: string
 }
 
 export interface UserInterface {
-  userRut: string, //number or string?
-  userName: string,
-  userEmail: string,
-  userPassword: string,
+  userRut: string, // number or string?
+  userName: string
+  userEmail: string
+  userPassword: string
   userAddress: string
 }
 
 export interface PublicacionInterface {
-  idPublicacion: string,
-  photo: string,
-  price: number,
-  state: EnumState,
-  title: string,
-  description: string,
+  idPublicacion: string
+  photo: string
+  price: number
+  state: EnumState
+  title: string
+  description: string
 }
 
 export type newPublicacionEntry = Omit<PublicacionInterface, 'idPublicacion'>
 
 export interface GestionInterface {
-  idGestion: string,
+  idGestion: string
   descripcionGestion: string
 }
 
@@ -41,10 +41,10 @@ export enum EnumState {
 }
 
 export interface ProductInterface {
-  idProducto: string,
-  productName: string,
-  brand: string,
-  type: Type,
+  idProducto: string
+  productName: string
+  brand: string
+  type: Type
 }
 
 export enum Type {
@@ -55,9 +55,9 @@ export enum Type {
 }
 
 export interface MarketInterface {
-  idMarket: string,
-  marketName: MarketName,
-  marketAddress: string,
+  idMarket: string
+  marketName: MarketName
+  marketAddress: string
 }
 
 export enum MarketName {

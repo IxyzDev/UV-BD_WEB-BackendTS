@@ -1,14 +1,14 @@
-import {Model} from 'sequelize';
+import { Model } from 'sequelize'
 
-import {MarketInterface, MarketName} from '../interfaces/types'
+import { MarketInterface, MarketName } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Market extends Model <MarketInterface> 
-    implements MarketInterface{
-      idMarket!: string
-      marketName!: MarketName
-      marketAddress!: string
-    static associate(models: any) {
+  class Market extends Model <MarketInterface>
+    implements MarketInterface {
+    idMarket!: string
+    marketName!: MarketName
+    marketAddress!: string
+    static associate (models: any) {
       Market.hasMany(models.Seccion)
     }
   }
@@ -16,7 +16,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idMarket: {
       primaryKey: true,
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     marketName: {
       allowNull: false,
@@ -29,7 +29,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
   }, {
     sequelize,
     timestamps: false,
-    modelName: 'Market',
-  });
-  return Market;
-};
+    modelName: 'Market'
+  })
+  return Market
+}
