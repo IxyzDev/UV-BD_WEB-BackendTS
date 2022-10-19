@@ -1,16 +1,16 @@
-import {Model}  from 'sequelize';
-import { UserInterface } from '../interfaces/types';
+import { Model } from 'sequelize'
+import { UserInterface } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Usuario extends Model<UserInterface> 
-  implements UserInterface {
-    userRut!: string;
-    userName!: string;
-    userEmail!: string;
-    userPassword!: string;
-    userAddress!: string;
-    
-    static associate(models: any) {
+  class Usuario extends Model<UserInterface>
+    implements UserInterface {
+    userRut!: string
+    userName!: string
+    userEmail!: string
+    userPassword!: string
+    userAddress!: string
+
+    static associate (models: any) {
       Usuario.hasMany(models.Publicacion)
     }
   }
@@ -19,25 +19,25 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.INTEGER,
       unique: true,
       allowNull: false,
-      primaryKey: true      
+      primaryKey: true
     },
     userName: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING
     },
     userEmail: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING
     },
     userPassword: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING
     },
     userAddress: {
-        type: DataTypes.STRING,
-        unique: true
+      type: DataTypes.STRING,
+      unique: true
     }
   }, {
     sequelize,
     timestamps: false,
-    modelName: 'Usuario',
-  });
-  return Usuario;
-};
+    modelName: 'Usuario'
+  })
+  return Usuario
+}
