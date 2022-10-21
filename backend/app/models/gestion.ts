@@ -8,7 +8,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idGestion!: string
     descripcionGestion!: string
     static associate (models: any) {
-      Gestion.belongsTo(models.Publicacion)
+      Gestion.belongsTo(models.Publicacion, {
+        foreignKey: 'idPublicacion',
+        foreignKeyConstraint: true
+      })
       // Gestion.hasMany(models.Administrador)
     }
   }

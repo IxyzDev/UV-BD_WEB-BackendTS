@@ -20,7 +20,7 @@ export interface PublicacionInterface {
   description: string
 }
 
-export type newPublicacionEntry = Omit<PublicacionInterface, 'idPublicacion'>
+//export type newPublicacionEntry = Omit<PublicacionInterface, 'idPublicacion'>
 
 export interface GestionInterface {
   idGestion: string

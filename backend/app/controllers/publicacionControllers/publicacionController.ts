@@ -1,11 +1,11 @@
-import db from '../models'
-import { PublicacionInterface } from '../interfaces/types'
+import db from '../../models'
+import { PublicacionInterface } from '../../interfaces/types'
 import { v4 as uuidv4 } from 'uuid'
-import * as v from "./verificacion"
+import * as v from "./verificacionPublicacion"
 
 const publicacion = db.Publicacion
 
-export const getEntries = async (): Promise<PublicacionInterface[]> => {
+export const getPublicacion = async (): Promise<PublicacionInterface[]> => {
   const publicaciones = await publicacion.findAll({ where: {} })
   return publicaciones
 }

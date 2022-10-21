@@ -1,4 +1,4 @@
-import { EnumState } from '../interfaces/types'
+import { EnumState } from '../../interfaces/types'
 
 export const parseState = (StateFromRequest: any): EnumState => {
   if (!isString(StateFromRequest) || !isState(StateFromRequest)) {

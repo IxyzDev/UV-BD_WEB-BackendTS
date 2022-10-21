@@ -16,8 +16,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
   }
   Usuario.init({
     userRut: {
-      type: DataTypes.INTEGER,
-      unique: true,
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
     },
@@ -31,8 +30,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.STRING
     },
     userAddress: {
-      type: DataTypes.STRING,
-      unique: true
+      type: DataTypes.STRING
     }
   }, {
     sequelize,
