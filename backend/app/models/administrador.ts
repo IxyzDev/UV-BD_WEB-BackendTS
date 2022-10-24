@@ -8,7 +8,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idAdmin!: string
     adminPassword!: string
     static associate (models: any) {
-      Administrador.hasMany(models.Gestion)
+      Administrador.hasMany(models.Gestion, {
+        foreignKey: 'idAdmin',
+        foreignKeyConstraint: true
+      })
     }
   }
   Administrador.init({

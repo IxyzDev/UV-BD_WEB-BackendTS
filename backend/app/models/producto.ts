@@ -11,7 +11,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
     type!: Type
 
     static associate (models: any) {
-      Producto.hasMany(models.Publicacion)
+      Producto.hasMany(models.Publicacion, {
+        foreignKey: 'idProducto',
+        foreignKeyConstraint: true
+      })
+      Producto.hasMany(models.Seccion, {
+        foreignKey: 'idProducto',
+        foreignKeyConstraint: true
+      })
     }
   }
   Producto.init({

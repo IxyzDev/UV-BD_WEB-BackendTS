@@ -1,9 +1,9 @@
+
 // Configuracion a utilizar debe ser asignada en development
 module.exports = {
     development: {
         username: 'root',
-        //password: '7827',
-        password: 'Informatica2022.-',
+        password: '7827',
         database: 'odp',
         host: 'localhost',
         dialect: 'mysql'

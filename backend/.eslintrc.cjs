@@ -5,5 +5,10 @@ module.exports = {
     root: true,
     rules: {       
       "@typescript-eslint/no-explicit-any": ["off"],
-   }
+   },
+   "env": {
+    "browser": true,
+    "amd": true,
+    "node": true
+},
   };
