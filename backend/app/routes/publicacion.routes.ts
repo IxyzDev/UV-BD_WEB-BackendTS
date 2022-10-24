@@ -1,15 +1,15 @@
 import express, { Request, Response } from 'express'
-import * as pc from '../controllers/publicacionController'
+import * as pc from '../controllers/publicacionControllers/publicacionController';
 import db from '../models'
 
 const router = express.Router()
 
 router.get('/read', async (_req: Request, res: Response) => {
   try {
-    const publicaciones = await pc.getEntries()
+    const publicaciones = await pc.getPublicacion()
     return res.json(publicaciones)
   } catch (error) {
-    return res.json({ msg: 'Error al leer papito' })
+    return res.json({ msg: 'Error al mostrar las publicaciones' })
   }
 })
 
@@ -22,8 +22,8 @@ router.post('/create', async (req: Request, res: Response) => {
     return res.json({ record, msg: 'Bien' })
   } catch (error) {
     console.log(error)
-    return res.json({ msg: 'Error al subir papito' })
+    return res.json({ msg: 'Error al crear una nueva publicacion' })
   }
 })
 
-module.exports = router;
+export default router

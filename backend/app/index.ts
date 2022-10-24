@@ -1,6 +1,10 @@
 import express from 'express'
-const cors = require("cors");
+import cors = require("cors");
 import db from './models'
+
+// Importacion de las rutas
+import publicacionRouter from "./routes/publicacion.routes";
+import usuarioRouter from "./routes/usuario.routes";
 
 const app = express()
 const PORT = 3000
@@ -8,15 +12,16 @@ const PORT = 3000
 app.use(cors())
 app.use(express.json()) // middleware que transforma la req.body a un json
 
-db.sequelize.sync({ alter: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`Se escucha ${PORT}`)
   })
 })
 
 app.get("/", (_req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "FELICIDADES LOGRASTE SER FELIZ" });
 });
 
 // rutas
-app.use("/publicacion", require("./routes/publicacion.routes"));
+app.use("/publicacion", publicacionRouter);
+app.use("/usuario", usuarioRouter);

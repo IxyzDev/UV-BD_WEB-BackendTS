@@ -9,7 +9,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
     marketName!: MarketName
     marketAddress!: string
     static associate (models: any) {
-      Market.hasMany(models.Seccion)
+      Market.hasMany(models.Seccion, {
+        foreignKey: 'idMarket',
+        foreignKeyConstraint: true
+      })
     }
   }
   Market.init({

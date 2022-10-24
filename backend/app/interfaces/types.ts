@@ -4,32 +4,45 @@ export interface AdminInterface {
 }
 
 export interface UserInterface {
-  userRut: string, // number or string?
+  userRut: string // number or string?
   userName: string
   userEmail: string
   userPassword: string
   userAddress: string
 }
 
-export interface PublicacionInterface {
+export interface PublicacionXUserXProductoInterface {
   idPublicacion: string
   photo: string
   price: number
   state: EnumState
   title: string
   description: string
+  userRut: string
+  idProducto: string
 }
 
-export type newPublicacionEntry = Omit<PublicacionInterface, 'idPublicacion'>
+export type PublicacionInterface = Omit<PublicacionXUserXProductoInterface, 'userRut' | 'idProducto'>
+//export type PublicacionInterface = Pick<PublicacionXUserXProductoInterface, 'idPublicacion' | 'photo'|  'price'|  'state' |  'title' | 'description' >
 
-export interface GestionInterface {
+export interface GestionXPublicacionXAdminInterface {
   idGestion: string
   descripcionGestion: string
+  idPublicacion: string
+  idAdmin: string
 }
 
-export interface SeccionInterface {
+export type GestionInterface = Omit<GestionXPublicacionXAdminInterface, 'idPublicacion' | 'idAdmin'>
+
+
+export interface SeccionXProductoXMarketInterface {
   idSeccion: string
+  nombre: string
+  idProducto: string
+  idMarket: string
 }
+
+export type SeccionInterface = Omit<SeccionXProductoXMarketInterface, 'idProducto' | 'idMarket'>
 
 export enum EnumState {
   Malo = 'malo',
