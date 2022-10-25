@@ -1,6 +1,6 @@
 import { Model } from 'sequelize'
 
-import { ProductInterface, Type } from '../interfaces/types'
+import { ProductInterface, TypeProduct } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
   class Producto extends Model <ProductInterface>
@@ -8,7 +8,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idProducto!: string
     productName!: string
     brand!: string
-    type!: Type
+    type!: TypeProduct
 
     static associate (models: any) {
       Producto.hasMany(models.Publicacion, {

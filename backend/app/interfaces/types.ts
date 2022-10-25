@@ -45,11 +45,11 @@ export interface SeccionXProductoXMarketInterface {
 export type SeccionInterface = Omit<SeccionXProductoXMarketInterface, 'idProducto' | 'idMarket'>
 
 export enum EnumState {
-  Malo = 'malo',
-  MedianamenteMalo = 'medio malo',
-  Intermedio = 'intermedio',
-  MedianamenteBueno = 'medio bueno',
-  Buena = 'bueno',
+  Malo = 'Malo',
+  MedianamenteMalo = 'Medio malo',
+  Intermedio = 'Intermedio',
+  MedianamenteBueno = 'Medio bueno',
+  Buena = 'Bueno',
 
 }
 
@@ -57,10 +57,10 @@ export interface ProductInterface {
   idProducto: string
   productName: string
   brand: string
-  type: Type
+  type: TypeProduct
 }
 
-export enum Type {
+export enum TypeProduct {
   Alimento = 'Alimento',
   Limpieza = 'Limpieza',
   Higiene = 'Higiene',
