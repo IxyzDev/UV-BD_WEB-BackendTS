@@ -4,7 +4,7 @@ import * as v from "./verificacionUsuario"
 
 const usuario = db.Usuario
 
-export const getEntries = async (): Promise< UserInterface[]> => {
+export const getUsuarios = async (): Promise< UserInterface[]> => {
     const usuarios = await usuario.findAll({ where: {} })
     return usuarios
   }

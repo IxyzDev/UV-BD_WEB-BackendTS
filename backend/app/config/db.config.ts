@@ -1,5 +1,3 @@
-
-// Configuracion a utilizar debe ser asignada en development
 module.exports = {
     development: {
         username: 'root',

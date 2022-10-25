@@ -5,6 +5,7 @@ import db from './models'
 // Importacion de las rutas
 import publicacionRouter from "./routes/publicacion.routes";
 import usuarioRouter from "./routes/usuario.routes";
+import productoRouter from "./routes/producto.routes";
 
 const app = express()
 const PORT = 3000
@@ -25,3 +26,4 @@ app.get("/", (_req, res) => {
 // rutas
 app.use("/publicacion", publicacionRouter);
 app.use("/usuario", usuarioRouter);
+app.use("/producto", productoRouter);
