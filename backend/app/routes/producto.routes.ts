@@ -23,7 +23,7 @@ router.post('/create', async (req: Request, res: Response) => {
     return res.json({ record, msg: 'Ingreso de producto correcto' })
   } catch (error) {
     console.log(error)
-    return res.json({ msg: 'Error al crear un nuevo producto' })
+    return res.json({ error, msg: 'Error al crear un nuevo producto' })
   }
 })
 

@@ -1,13 +1,13 @@
 import { Model } from 'sequelize'
 
-import { MarketInterface, MarketName } from '../interfaces/types'
+import { MarketInterface, NameMarket } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
   class Market extends Model <MarketInterface>
     implements MarketInterface {
     idMarket!: string
-    marketName!: MarketName
-    marketAddress!: string
+    nameMarket!: NameMarket
+    addressMarket!: string
     static associate (models: any) {
       Market.hasMany(models.Seccion, {
         foreignKey: 'idMarket',
@@ -21,11 +21,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    marketName: {
+    nameMarket: {
       allowNull: false,
       type: DataTypes.STRING
     },
-    marketAddress: {
+    addressMarket: {
       allowNull: false,
       type: DataTypes.STRING
     }

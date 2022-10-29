@@ -6,6 +6,10 @@ import db from './models'
 import publicacionRouter from "./routes/publicacion.routes";
 import usuarioRouter from "./routes/usuario.routes";
 import productoRouter from "./routes/producto.routes";
+import administradorRouter from './routes/administrador.routes'
+import marketRouter from './routes/market.routes';
+import seccionRouter from './routes/seccion.routes'
+import gestionRouter from './routes/gestion.routes';
 
 const app = express()
 const PORT = 3000
@@ -27,3 +31,7 @@ app.get("/", (_req, res) => {
 app.use("/publicacion", publicacionRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/producto", productoRouter);
+app.use("/administrador", administradorRouter)
+app.use("/market", marketRouter);
+app.use("/seccion", seccionRouter);
+app.use("/gestion", gestionRouter)

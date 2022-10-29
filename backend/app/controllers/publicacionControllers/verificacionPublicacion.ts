@@ -41,10 +41,7 @@ export const parseDescription = (DescriptionFromRequest: any): string => {
 
 
 export const parseUserRut = (UserRutRequest: any): string => {
-  const resultado = isRutUsuario(UserRutRequest)
-  console.log(resultado)
-  if (!isString(UserRutRequest) || !resultado) {
-    console.log("BBBBBBBBBBBBBBBBB")
+  if (!isString(UserRutRequest)) {
     throw new Error('EL rut es incorrecto')
   }
   return UserRutRequest
@@ -52,10 +49,7 @@ export const parseUserRut = (UserRutRequest: any): string => {
 
 
 export const parseIdProducto = (IdProductoRequest: any): string => {
-  const resultado = isIdProducto(IdProductoRequest)
-  console.log(resultado)
-  if (!isString(IdProductoRequest) || !resultado) {
-    console.log("AAAAAAAAAAAAAAAAA")
+  if (!isString(IdProductoRequest)) {
     throw new Error('El id del producto es incorrecto')
   }
   return IdProductoRequest
@@ -70,7 +64,6 @@ export const isRutUsuario = async (param: any): Promise<boolean> => {
   })
   return RutUsuario
 }
-  
 
 export const isIdProducto = async (param: any): Promise<boolean> => {
   const IdProducto = await producto.findByPk(param).then((resultado: any) => {

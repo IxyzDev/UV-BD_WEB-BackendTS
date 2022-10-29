@@ -11,18 +11,15 @@ export const getPublicaciones = async (): Promise<PublicacionXUserXProductoInter
 }
 
 export const VerifUserXProducto =  async (param: any): Promise<boolean> => {
-  const verifRut = await v.isRutUsuario(param.idPRoducto)
-  const verifId = await v.isIdProducto(param.userRut)
+  const verifRut = await v.isRutUsuario(param.userRut)
+  const verifId = await v.isIdProducto(param.idProducto)
   if (!verifRut) {
     throw new Error("Rut es incorrecto")
   }
   if (!verifId) {
     throw new Error("Id es incorrecto")
   }
-  if (verifId && verifRut) {
-    return true
-  }
-  return false
+  return true
 }
 
 export const postPublicacion = (object: any): PublicacionXUserXProductoInterface  => {

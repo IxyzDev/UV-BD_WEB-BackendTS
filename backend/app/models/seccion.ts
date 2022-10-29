@@ -6,7 +6,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
   class Seccion extends Model <SeccionXProductoXMarketInterface>
     implements SeccionXProductoXMarketInterface {
     idSeccion!: string
-    nombre!: string
+    nombreSeccion!: string
     idProducto!: string
     idMarket!: string
     static associate (_models: any) {
@@ -20,7 +20,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
       allowNull: false
     },
-    nombre: {
+    nombreSeccion: {
       type: DataTypes.STRING,
       allowNull: false
     },

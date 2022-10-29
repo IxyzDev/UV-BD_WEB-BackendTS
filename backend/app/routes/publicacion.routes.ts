@@ -16,7 +16,7 @@ router.get('/read', async (_req: Request, res: Response) => {
 router.post('/create', async (req: Request, res: Response) => {
   try {
     if (!await publicacionController.VerifUserXProducto({ ...req.body })) {
-      throw new Error('JHGF')
+      throw new Error('Error dentro de los parametros de rut o  identificador de producto')
     }
 
     const newPublicacionEntry = publicacionController.postPublicacion({ ...req.body })
