@@ -22,7 +22,7 @@ router.post('/create', async (req: Request, res: Response) => {
     return res.json({ record, msg: 'Usuarios subidos correctamente' })
   } catch (error) {
     console.log(error)
-    return res.json({ msg: 'Error al subir al nuevo usuario' })
+    return res.json({ error, msg: 'Error al subir al nuevo usuario' })
   }
 })
 

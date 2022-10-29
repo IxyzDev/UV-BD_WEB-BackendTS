@@ -1,5 +1,6 @@
 export interface AdminInterface {
   idAdmin: string
+  adminName: string
   adminPassword: string
 }
 
@@ -37,7 +38,7 @@ export type GestionInterface = Omit<GestionXPublicacionXAdminInterface, 'idPubli
 
 export interface SeccionXProductoXMarketInterface {
   idSeccion: string
-  nombre: string
+  nombreSeccion: string
   idProducto: string
   idMarket: string
 }
@@ -69,11 +70,11 @@ export enum TypeProduct {
 
 export interface MarketInterface {
   idMarket: string
-  marketName: MarketName
-  marketAddress: string
+  nameMarket: NameMarket
+  addressMarket: string
 }
 
-export enum MarketName {
+export enum NameMarket {
   SantaIsabel = 'Santa Isabel',
   Lider = 'Lider',
   Tottus = 'Tottus',
