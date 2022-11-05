@@ -1,6 +1,6 @@
 import db from '../models';
 import {PublicacionInterface} from '../interfaces/types'
-import  * as v  from '../controllers/Verificacion'
+import  * as v  from '../controllers/verificacion'
 import { v4 as uuidv4 } from 'uuid';
 
 
