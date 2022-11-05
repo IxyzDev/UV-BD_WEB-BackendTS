@@ -1,0 +1,73 @@
+[
+  {
+    "_id": "6b419a10-013b-4d71-bef7-cee0760a90cc",
+    "colId": "history",
+    "containerId": "",
+    "name": "Crear un mercado",
+    "url": "localhost:3000/market/read",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-28T00:34:57.373Z",
+    "modified": "2022-10-29T21:16:44.384Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"nameMarket\": \"Lider\",\n  \"addressMarket\": \"En una direccion personal y particular\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0d0a8201-5421-4d57-927d-88f1410b296c",
+    "colId": "history",
+    "containerId": "",
+    "name": "Crear gestiones",
+    "url": "localhost:3000/gestion/create",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-10-28T02:45:57.145Z",
+    "modified": "2022-10-29T15:39:24.984Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n        \"descripcionGestion\": \"Eliminado porque me caia mal\",\n        \"idPublicacion\": \"16f61c53-cc14-44b0-86bf-5e5ebbaa6699\",\n        \"idAdmin\": \"61f2c431-095a-49dc-b64d-bf6276ede5b2\"\n    }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "066fb4e1-590a-46a7-a927-c9f1a3c293ae",
+    "colId": "history",
+    "containerId": "",
+    "name": "Crear una seccion",
+    "url": "localhost:3000/seccion/read",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-29T21:13:11.309Z",
+    "modified": "2022-10-29T21:25:17.036Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"nombreSeccion\": \"Helado\",\n    \"idProducto\": \"7ba2c999-7d29-42df-b77f-f9625e0965e3\",\n    \"idMarket\": \"9f8a4a6e-caaa-4b6d-9783-c7a9e29109a3\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e257b8bc-a049-46c7-993e-48770c3fdf09",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3000/producto/read",
+    "url": "localhost:3000/producto/read",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-29T21:16:24.162Z",
+    "modified": "2022-10-29T21:16:24.213Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
