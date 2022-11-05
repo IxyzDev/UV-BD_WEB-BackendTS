@@ -1,14 +1,18 @@
-import {Model}  from 'sequelize';
+import { Model } from 'sequelize'
 
-import {GestionInterface} from '../interfaces/types';
+import { GestionXPublicacionXAdminInterface } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-   class Gestion extends Model <GestionInterface> 
-   implements GestionInterface {
+  class Gestion extends Model <GestionXPublicacionXAdminInterface>
+    implements GestionXPublicacionXAdminInterface {
     idGestion!: string
     descripcionGestion!: string
-    static associate(models: any) {
-      Gestion.belongsTo(models.Publicacion)
+    idPublicacion!: string
+    idAdmin!: string
+    
+    
+    static associate (_models: any) {
+      //Gestion.belongsTo(models.Publicacion)
       // Gestion.hasMany(models.Administrador)
     }
   }
@@ -23,11 +27,21 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false
     },
     
+    // foreign Key
+    idPublicacion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    idAdmin: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+
   }, {
     sequelize,
     timestamps: false,
-    modelName: 'Gestion',
-  },
-);
-  return Gestion;
-};
+    modelName: 'Gestion'
+  }
+  )
+  return Gestion
+}

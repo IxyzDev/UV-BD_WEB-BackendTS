@@ -1,53 +1,67 @@
 export interface AdminInterface {
-  idAdmin: string,
+  idAdmin: string
+  adminName: string
   adminPassword: string
 }
 
 export interface UserInterface {
-  userRut: string, //number or string?
-  userName: string,
-  userEmail: string,
-  userPassword: string,
+  userRut: string // number or string?
+  userName: string
+  userEmail: string
+  userPassword: string
   userAddress: string
 }
 
-export interface PublicacionInterface {
-  idPublicacion: string,
-  photo: string,
-  price: number,
-  state: EnumState,
-  title: string,
-  description: string,
+export interface PublicacionXUserXProductoInterface {
+  idPublicacion: string
+  photo: string
+  price: number
+  state: EnumState
+  title: string
+  description: string
+  userRut: string
+  idProducto: string
 }
 
-export type newPublicacionEntry = Omit<PublicacionInterface, 'idPublicacion'>
+export type PublicacionInterface = Omit<PublicacionXUserXProductoInterface, 'userRut' | 'idProducto'>
+//export type PublicacionInterface = Pick<PublicacionXUserXProductoInterface, 'idPublicacion' | 'photo'|  'price'|  'state' |  'title' | 'description' >
 
-export interface GestionInterface {
-  idGestion: string,
+export interface GestionXPublicacionXAdminInterface {
+  idGestion: string
   descripcionGestion: string
+  idPublicacion: string
+  idAdmin: string
 }
 
-export interface SeccionInterface {
+export type GestionInterface = Omit<GestionXPublicacionXAdminInterface, 'idPublicacion' | 'idAdmin'>
+
+
+export interface SeccionXProductoXMarketInterface {
   idSeccion: string
+  nombreSeccion: string
+  idProducto: string
+  idMarket: string
 }
+
+export type SeccionInterface = Omit<SeccionXProductoXMarketInterface, 'idProducto' | 'idMarket'>
 
 export enum EnumState {
-  Malo = 'malo',
-  MedianamenteMalo = 'medio malo',
-  Intermedio = 'intermedio',
-  MedianamenteBueno = 'medio bueno',
-  Buena = 'bueno',
+  Malo = 'Malo',
+  MedianamenteMalo = 'Medio malo',
+  Intermedio = 'Intermedio',
+  MedianamenteBueno = 'Medio bueno',
+  Buena = 'Bueno',
 
 }
 
 export interface ProductInterface {
-  idProducto: string,
-  productName: string,
-  brand: string,
-  type: Type,
+  idProducto: string
+  productName: string
+  brand: string
+  type: TypeProduct
 }
 
-export enum Type {
+export enum TypeProduct {
   Alimento = 'Alimento',
   Limpieza = 'Limpieza',
   Higiene = 'Higiene',
@@ -55,12 +69,12 @@ export enum Type {
 }
 
 export interface MarketInterface {
-  idMarket: string,
-  marketName: MarketName,
-  marketAddress: string,
+  idMarket: string
+  nameMarket: NameMarket
+  addressMarket: string
 }
 
-export enum MarketName {
+export enum NameMarket {
   SantaIsabel = 'Santa Isabel',
   Lider = 'Lider',
   Tottus = 'Tottus',

@@ -1,3 +1,9 @@
 export const users = [
-    // Datos en formato json para test de bd
+  {
+    "userName": "Esteban",
+    "userRut": "20.479.055-8",
+    "userEmail": "dies@gmail.com",
+    "userPassword": "kevin7827",
+    "userAddress": "En mi casa"
+  }
 ]

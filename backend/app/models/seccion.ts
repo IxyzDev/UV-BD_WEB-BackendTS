@@ -1,13 +1,16 @@
-import {Model} from 'sequelize';
+import { Model } from 'sequelize'
 
-import {SeccionInterface} from '../interfaces/types'
+import { SeccionXProductoXMarketInterface } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Seccion extends Model <SeccionInterface> 
-  implements SeccionInterface{
+  class Seccion extends Model <SeccionXProductoXMarketInterface>
+    implements SeccionXProductoXMarketInterface {
     idSeccion!: string
-    static associate(models: any) {
-      Seccion.belongsTo(models.Producto)
+    nombreSeccion!: string
+    idProducto!: string
+    idMarket!: string
+    static associate (_models: any) {
+      //Seccion.belongsTo(models.Producto)
     }
   }
   Seccion.init({
@@ -16,11 +19,23 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.STRING,
 
       allowNull: false
+    },
+    nombreSeccion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    idProducto: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    idMarket: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     sequelize,
     timestamps: false,
-    modelName: 'Seccion',
-  });
-  return Seccion;
-};
+    modelName: 'Seccion'
+  })
+  return Seccion
+}

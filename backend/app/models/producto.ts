@@ -1,24 +1,31 @@
-import {Model} from 'sequelize';
+import { Model } from 'sequelize'
 
-import {ProductInterface, Type} from '../interfaces/types';
+import { ProductInterface, TypeProduct } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Producto extends Model <ProductInterface> 
-  implements ProductInterface {
+  class Producto extends Model <ProductInterface>
+    implements ProductInterface {
     idProducto!: string
     productName!: string
     brand!: string
-    type!: Type
+    type!: TypeProduct
 
-    static associate(models: any) {
-      Producto.hasMany(models.Publicacion)
+    static associate (models: any) {
+      Producto.hasMany(models.Publicacion, {
+        foreignKey: 'idProducto',
+        foreignKeyConstraint: true
+      })
+      Producto.hasMany(models.Seccion, {
+        foreignKey: 'idProducto',
+        foreignKeyConstraint: true
+      })
     }
   }
   Producto.init({
     idProducto: {
       primaryKey: true,
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     productName: {
       allowNull: false,
@@ -35,7 +42,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
   }, {
     sequelize,
     timestamps: false,
-    modelName: 'Producto',
-  });
-  return Producto;
-};
+    modelName: 'Producto'
+  })
+  return Producto
+}
