@@ -8,7 +8,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     idSeccion!: string
     nombreSeccion!: string
     idProducto!: string
-    idMarket!: string
+    idMercado!: string
     static associate (_models: any) {
       //Seccion.belongsTo(models.Producto)
     }
@@ -28,7 +28,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    idMarket: {
+    idMercado: {
       type: DataTypes.STRING,
       allowNull: false
     }

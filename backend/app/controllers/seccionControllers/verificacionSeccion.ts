@@ -1,6 +1,5 @@
-import { EnumState } from '../../interfaces/types'
 import db from '../../models'
-const market = db.Market
+const mercado = db.Mercado
 const producto = db.Producto
 
 export const parseNombreSeccion = (NombreSeccionRequest: any): string => {
@@ -18,13 +17,12 @@ export const parseDescription = (DescriptionFromRequest: any): string => {
 }
 
 
-export const parseIdMarket = (IdMarketRequest: any): string => {
-    if (!isString(IdMarketRequest)) {
+export const parseIdMercado = (IdMercadoRequest: any): string => {
+    if (!isString(IdMercadoRequest)) {
         throw new Error('EL identificador de mercado es incorrecto')
     }
-    return IdMarketRequest
+    return IdMercadoRequest
 }
-
 
 export const parseIdProducto = (IdProductoRequest: any): string => {
     if (!isString(IdProductoRequest)) {
@@ -33,14 +31,14 @@ export const parseIdProducto = (IdProductoRequest: any): string => {
     return IdProductoRequest
 }
 
-export const isIdMarket = async (param: any): Promise<boolean> => {
-    const isIdMarket = await market.findByPk(param).then((resultado: any) => {
+export const isIdMercado = async (param: any): Promise<boolean> => {
+    const isIdMercado = await mercado.findByPk(param).then((resultado: any) => {
         if (resultado == null) {
             return false;
         }
-        return resultado instanceof market
+        return resultado instanceof mercado
     })
-    return isIdMarket
+    return isIdMercado
 }
 
 export const isIdProducto = async (param: any): Promise<boolean> => {
@@ -51,19 +49,6 @@ export const isIdProducto = async (param: any): Promise<boolean> => {
         return resultado instanceof producto
     })
     return IdProducto
-}
-
-//const project = await ProjefindByPk(param);
-//if (project === null) {
-//console.log('Not found!');
-//} else {
-//console.log(project instanceof Project); // true
-// Its primary key is 123
-//}
-
-
-export const isState = (param: any): boolean => {
-    return Object.values(EnumState).includes(param)
 }
 
 export const isString = (string: string): boolean => {
