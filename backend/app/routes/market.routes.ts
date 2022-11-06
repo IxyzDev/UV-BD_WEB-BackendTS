@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-import * as marketControllers from '../controllers/marketControllers/marketController';
+import * as marketControllers from '../controllers/mercadoControllers/mercadoController';
 import db from '../models'
 
 const router = express.Router()

@@ -1,38 +1,39 @@
 import { Model } from 'sequelize'
 
-import { MarketInterface, NameMarket } from '../interfaces/types'
+import { MercadoInterface, NombresMercado } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Market extends Model <MarketInterface>
-    implements MarketInterface {
-    idMarket!: string
-    nameMarket!: NameMarket
-    addressMarket!: string
+  class Mercado extends Model <MercadoInterface>
+    implements MercadoInterface {
+    idMercado!: string
+    nombreMercado!: NombresMercado
+    direccionMercado!: string
+
     static associate (models: any) {
-      Market.hasMany(models.Seccion, {
-        foreignKey: 'idMarket',
+      Mercado.hasMany(models.Seccion, {
+        foreignKey: 'idMercado',
         foreignKeyConstraint: true
       })
     }
   }
-  Market.init({
-    idMarket: {
+  Mercado.init({
+    idMercado: {
       primaryKey: true,
       allowNull: false,
       type: DataTypes.STRING
     },
-    nameMarket: {
+    nombreMercado: {
       allowNull: false,
       type: DataTypes.STRING
     },
-    addressMarket: {
+    direccionMercado: {
       allowNull: false,
       type: DataTypes.STRING
     }
   }, {
     sequelize,
     timestamps: false,
-    modelName: 'Market'
+    modelName: 'Mercado'
   })
-  return Market
+  return Mercado
 }

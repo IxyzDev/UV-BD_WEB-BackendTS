@@ -1,28 +1,28 @@
-import { TypeProduct } from '../../interfaces/types'
+import { TiposProducto } from '../../interfaces/types'
 
-export const parseProductName = (productNameRequest: any): string => {
-  if (!isString(productNameRequest)) {
+export const parseNombreProducto = (NombreProductoFromRequest: any): string => {
+  if (!isString(NombreProductoFromRequest)) {
     throw new Error('Error en el nombre del producto')
   }
-  return productNameRequest
+  return NombreProductoFromRequest
 }
 
-export const parseBrand = (brandRequest: any): string => {
-  if (!isString(brandRequest)) {
+export const parseMarcaProducto = (MarcaProductoFromRequest: any): string => {
+  if (!isString(MarcaProductoFromRequest)) {
     throw new Error('Error en la marca del producto')
   }
-  return brandRequest
+  return MarcaProductoFromRequest
 }
 
-export const parseType = (typeRequest: any): TypeProduct => {
-  if (!isString(typeRequest) || !isTypeProduct(typeRequest)) {
+export const parseTipoProducto = (TipoProductoFromRequest: any): TiposProducto => {
+  if (!isString(TipoProductoFromRequest) || !isTiposProducto(TipoProductoFromRequest)) {
     throw new Error('Error en la marca del producto')
   }
-  return typeRequest
+  return TipoProductoFromRequest
 }
 
-export const isTypeProduct = (param: any): boolean => {
-  return Object.values(TypeProduct).includes(param)
+export const isTiposProducto = (param: any): boolean => {
+  return Object.values(TiposProducto).includes(param)
 }
 
 export const isString = (string: string): boolean => {

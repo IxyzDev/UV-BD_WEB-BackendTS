@@ -18,9 +18,9 @@ export const getAllProductosById = async (object: any): Promise<ProductInterface
 export const postProducto = (object: any):  ProductInterface => {
   const newEntry:  ProductInterface = {
   idProducto: uuidv4(),
-  productName: v.parseProductName(object.productName),
-  brand: v.parseBrand(object.brand),
-  type: v.parseType(object.type),
+  nombreProducto: v.parseNombreProducto(object.nombreProducto),
+  marcaProducto: v.parseMarcaProducto(object.marcaProducto),
+  tipoProducto: v.parseTipoProducto(object.tipoProducto),
   }
 
   return newEntry

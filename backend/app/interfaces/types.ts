@@ -42,67 +42,39 @@ export interface UserInterface {
   contrasenaUsuario: string
   direccionUsuario: string
 }
-
-export interface SeccionInterface {
-  idSeccion: string
-  nombreSeccion: string
-  idProducto: string
-  idMarket: string
-}
-
-//export type SeccionInterface = Omit<SeccionXProductoXMarketInterface, 'idProducto' | 'idMarket'>
-
+//export type SeccionInterface = Omit<SeccionXProductoXMercadoInterface, 'idProducto' | 'idMercado'>
 export interface ProductInterface {
   idProducto: string
-  productName: string
-  brand: string
-  type: TypeProduct
+  nombreProducto: string
+  marcaProducto: string
+  tipoProducto: TiposProducto
 }
 
-export enum TypeProduct {
+export enum TiposProducto {
   Alimento = 'Alimento',
   Limpieza = 'Limpieza',
   Higiene = 'Higiene',
   Alcohol = 'Alcohol'
 }
 
-export interface MarketInterface {
-  idMarket: string
-  nameMarket: NameMarket
-  addressMarket: string
+export interface SeccionInterface {
+  idSeccion: string
+  nombreSeccion: string
+  idProducto: string
+  idMercado: string
 }
 
-export enum NameMarket {
+
+export interface MercadoInterface {
+  idMercado: string
+  nombreMercado: NombresMercado
+  direccionMercado: string
+}
+
+export enum NombresMercado {
   SantaIsabel = 'Santa Isabel',
   Lider = 'Lider',
   Tottus = 'Tottus',
   Unimarc = 'Unimarc',
   Acuenta = 'Acuenta'
 }
-
-// Tutorial
-
-export enum Weather {
-  A = 'a',
-  B = 'b',
-  C = 'c',
-}
-
-export enum Visibility {
-  Buena = 'buena',
-  Mala = 'mala'
-}
-
-export interface DiaryEntry {
-  id: number
-  date: string
-  weather: Weather
-  visibility: Visibility
-  comment: string
-}
-
-// export type NoComment = Pick<DiaryEntry, 'id' | 'date' | 'weather' | 'visibility'>
-
-export type NoComment = Omit<DiaryEntry, 'comment'>
-
-export type newDiaryEntry = Omit<DiaryEntry, 'id'>

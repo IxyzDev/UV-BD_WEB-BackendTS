@@ -1,48 +1,48 @@
 import { Model } from 'sequelize'
 
-import { ProductInterface, TypeProduct } from '../interfaces/types'
+import { ProductInterface, TiposProducto } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Producto extends Model <ProductInterface>
-    implements ProductInterface {
-    idProducto!: string
-    productName!: string
-    brand!: string
-    type!: TypeProduct
+class Producto extends Model <ProductInterface>
+  implements ProductInterface {
+  idProducto!: string
+  nombreProducto!: string
+  marcaProducto!: string
+  tipoProducto!: TiposProducto
 
-    static associate (models: any) {
-      Producto.hasMany(models.Publicacion, {
-        foreignKey: 'idProducto',
-        foreignKeyConstraint: true
-      })
-      Producto.hasMany(models.Seccion, {
-        foreignKey: 'idProducto',
-        foreignKeyConstraint: true
-      })
-    }
+  static associate (models: any) {
+    Producto.hasMany(models.Publicacion, {
+      foreignKey: 'idProducto',
+      foreignKeyConstraint: true
+    })
+    Producto.hasMany(models.Seccion, {
+      foreignKey: 'idProducto',
+      foreignKeyConstraint: true
+    })
   }
-  Producto.init({
-    idProducto: {
-      primaryKey: true,
-      allowNull: false,
-      type: DataTypes.STRING
-    },
-    productName: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
-    brand: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
-    type: {
-      allowNull: false,
-      type: DataTypes.STRING
-    }
-  }, {
-    sequelize,
-    timestamps: false,
-    modelName: 'Producto'
+}
+Producto.init({
+  idProducto: {
+    primaryKey: true,
+    allowNull: false,
+    type: DataTypes.STRING
+  },
+  nombreProducto: {
+    allowNull: false,
+    type: DataTypes.STRING
+  },
+  marcaProducto: {
+    allowNull: false,
+    type: DataTypes.STRING
+  },
+  tipoProducto: {
+    allowNull: false,
+    type: DataTypes.STRING
+  }
+}, {
+  sequelize,
+  timestamps: false,
+  modelName: 'Producto'
   })
   return Producto
 }
