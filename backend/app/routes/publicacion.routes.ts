@@ -9,7 +9,7 @@ router.get('/read', async (_req: Request, res: Response) => {
     const publicaciones = await publicacionController.getPublicaciones()
     return res.json(publicaciones)
   } catch (error) {
-    return res.json({ msg: 'Error al mostrar las publicaciones' })
+    return res.json({ msg: 'Error al mostrar las publicaciones', error })
   }
 })
 

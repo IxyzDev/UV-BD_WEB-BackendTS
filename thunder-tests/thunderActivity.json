@@ -61,11 +61,11 @@
     "colId": "history",
     "containerId": "",
     "name": "localhost:3000/producto/read",
-    "url": "localhost:3000/producto/read",
+    "url": "localhost:3000/publicacion/read",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-10-29T21:16:24.162Z",
-    "modified": "2022-10-29T21:16:24.213Z",
+    "modified": "2022-11-05T20:35:37.739Z",
     "headers": [],
     "params": [],
     "tests": []
