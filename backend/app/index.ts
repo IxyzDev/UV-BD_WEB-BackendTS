@@ -7,7 +7,7 @@ import publicacionRouter from "./routes/publicacion.routes";
 import usuarioRouter from "./routes/usuario.routes";
 import productoRouter from "./routes/producto.routes";
 import administradorRouter from './routes/administrador.routes'
-import marketRouter from './routes/market.routes';
+import mercadoRouter from './routes/mercado.routes';
 import seccionRouter from './routes/seccion.routes'
 import gestionRouter from './routes/gestion.routes';
 
@@ -32,6 +32,6 @@ app.use("/publicacion", publicacionRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/producto", productoRouter);
 app.use("/administrador", administradorRouter)
-app.use("/market", marketRouter);
+app.use("/market", mercadoRouter);
 app.use("/seccion", seccionRouter);
 app.use("/gestion", gestionRouter)

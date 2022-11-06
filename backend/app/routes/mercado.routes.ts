@@ -1,13 +1,13 @@
 import express, { Request, Response } from 'express'
-import * as marketControllers from '../controllers/mercadoControllers/mercadoController';
+import * as mercadoControllers from '../controllers/mercadoControllers/mercadoController';
 import db from '../models'
 
 const router = express.Router()
 
 router.get('/read', async (_req: Request, res: Response) => {
     try {
-        const markets = await marketControllers.getMarket()
-        return res.json(markets)
+        const mercados = await mercadoControllers.getMercado()
+        return res.json(mercados)
     } catch (error) {
         return res.json({ msg: 'Error al mostrar los mercados disponibles' })
     }
@@ -15,9 +15,9 @@ router.get('/read', async (_req: Request, res: Response) => {
 
 router.post('/create', async (req: Request, res: Response) => {
     try {
-        const newMarketEntry = marketControllers.postMarket({ ...req.body })
+        const newMercadoEntry = mercadoControllers.postMercado({ ...req.body })
 
-        const record = db.Market.create(newMarketEntry)
+        const record = db.Mercado.create(newMercadoEntry)
 
         return res.json({ record, msg: 'Mercado añadido correctamente' })
     } catch (error) {
