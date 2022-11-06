@@ -1,11 +1,11 @@
 import db from '../../models';
-import { GestionXPublicacionXAdminInterface } from '../../interfaces/types';
+import { GestionInterface } from '../../interfaces/types';
 import { v4 as uuidv4 } from 'uuid';
 import * as v from "./verificacionGestion";
 
 const gestion = db.Gestion;
 
-export const getGestiones = async (): Promise<GestionXPublicacionXAdminInterface[]> => {
+export const getGestiones = async (): Promise<GestionInterface[]> => {
   const gestiones = await gestion.findAll({ where: {} });
   return gestiones;
 }
@@ -25,12 +25,14 @@ export const VerifNewGestion =  async (param: any): Promise<boolean> => {
   return true
 }
 
-export const postgestion = (object: any): GestionXPublicacionXAdminInterface  => {
-  const newEntry: GestionXPublicacionXAdminInterface = {
+export const postgestion = (object: any): GestionInterface  => {
+  const newEntry: GestionInterface = {
     idGestion: uuidv4(),
+    tituloGestion: v.parseTituloGestion(object.tituloGestion),
     descripcionGestion: v.parseDescripcionGestion(object.descripcionGestion),
-    idPublicacion: v.parseIdPublicacion(object.idPublicacion),
-    idAdmin: v.parseIdAdmin(object.idAdmin)
+    idAdmin: v.parseIdAdmin(object.idAdmin),
+    idPublicacion: v.parseIdPublicacion(object.idPublicacion)
+    
   }
   return newEntry
 }

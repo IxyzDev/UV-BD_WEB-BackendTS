@@ -2,6 +2,13 @@ import db from '../../models'
 const administrador = db.Administrador
 const publicacion = db.Publicacion
 
+export const parseTituloGestion = (TituloGestionFromRequest: any): string => {
+  if (!isString(TituloGestionFromRequest)) {
+    throw new Error('Error en el titulo de la gestion')
+  }
+  return TituloGestionFromRequest
+}
+
 export const parseDescripcionGestion = (DescriptionFromRequest: any): string => {
   if (!isString(DescriptionFromRequest)) {
     throw new Error('Error en la descripcion de la gestion')

@@ -1,15 +1,15 @@
-export const parseAdminPassword = (AdminPasswordRequest: any): string => {
-  if (!isString(AdminPasswordRequest)) {
+export const parseContrasenaAdmin = (ContrasenaAdminFromRequest: any): string => {
+  if (!isString(ContrasenaAdminFromRequest)) {
     throw new Error('Error al verificar la contraseña del administrador')
   }
-  return AdminPasswordRequest
+  return ContrasenaAdminFromRequest
 }
 
-export const parseAdminName = (AdminNameRequest: any): string => {
-  if (!isString(AdminNameRequest)) {
+export const parseNombreAdmin = (NombreAdminFromRequest: any): string => {
+  if (!isString(NombreAdminFromRequest)) {
     throw new Error('Error al verificar la contraseña del administrador')
   }
-  return AdminNameRequest
+  return NombreAdminFromRequest
 }
 
 

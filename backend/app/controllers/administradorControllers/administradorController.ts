@@ -13,8 +13,8 @@ export const getAdministradores = async (): Promise< AdminInterface[]> => {
   export const postAdministrador = (object: any):  AdminInterface => {
     const newEntry:  AdminInterface = {
       idAdmin: uuidv4(),
-      adminName: v.parseAdminName(object.adminName),
-      adminPassword: v.parseAdminPassword(object.adminPassword)
+      nombreAdmin: v.parseNombreAdmin(object.nombreAdmin),
+      contrasenaAdmin: v.parseContrasenaAdmin(object.contrasenaAdmin)
     }
   
     return newEntry

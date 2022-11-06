@@ -1,15 +1,15 @@
 import { Model } from 'sequelize'
 
-import { GestionXPublicacionXAdminInterface } from '../interfaces/types'
+import { GestionInterface } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Gestion extends Model <GestionXPublicacionXAdminInterface>
-    implements GestionXPublicacionXAdminInterface {
+  class Gestion extends Model <GestionInterface>
+    implements GestionInterface {
     idGestion!: string
+    tituloGestion!: string
     descripcionGestion!: string
-    idPublicacion!: string
     idAdmin!: string
-    
+    idPublicacion!: string
     
     static associate (_models: any) {
       //Gestion.belongsTo(models.Publicacion)
@@ -21,6 +21,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
+    },
+    tituloGestion: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     descripcionGestion: {
       type: DataTypes.STRING,
