@@ -1,58 +1,56 @@
 export interface AdminInterface {
   idAdmin: string
-  adminName: string
-  adminPassword: string
+  nombreAdmin: string
+  contrasenaAdmin: string
+}
+
+export interface GestionInterface {
+  idGestion: string
+  tituloGestion: string
+  descripcionGestion: string
+  idAdmin: string
+  idPublicacion: string
+}
+
+export interface PublicacionInterface {
+  idPublicacion: string
+  rutUsuario: string
+  idProducto: string
+  fotoPublicacion: string
+  precioPublicacion: number
+  estadoPublicacion: EstadosPublicacion
+  tituloPublicacion: string
+  descripcionPublicacion: string
+}
+
+//export type PublicacionInterface = Omit<PublicacionXUserXProductoInterface, 'userRut' | 'idProducto'>
+//export type PublicacionInterface = Pick<PublicacionXUserXProductoInterface, 'idPublicacion' | 'photo'|  'price'|  'state' |  'title' | 'description' >
+
+
+export enum EstadosPublicacion {
+  Malo = 'Malo',
+  MedianamenteMalo = 'Medianamente malo',
+  Intermedio = 'Intermedio',
+  MedianamenteBueno = 'Medianamente bueno',
+  Buena = 'Bueno',
 }
 
 export interface UserInterface {
-  userRut: string // number or string?
-  userName: string
-  userEmail: string
-  userPassword: string
-  userAddress: string
+  rutUsuario: string
+  nombreUsuario: string
+  correoUsuario: string
+  contrasenaUsuario: string
+  direccionUsuario: string
 }
 
-export interface PublicacionXUserXProductoInterface {
-  idPublicacion: string
-  photo: string
-  price: number
-  state: EnumState
-  title: string
-  description: string
-  userRut: string
-  idProducto: string
-}
-
-export type PublicacionInterface = Omit<PublicacionXUserXProductoInterface, 'userRut' | 'idProducto'>
-//export type PublicacionInterface = Pick<PublicacionXUserXProductoInterface, 'idPublicacion' | 'photo'|  'price'|  'state' |  'title' | 'description' >
-
-export interface GestionXPublicacionXAdminInterface {
-  idGestion: string
-  descripcionGestion: string
-  idPublicacion: string
-  idAdmin: string
-}
-
-export type GestionInterface = Omit<GestionXPublicacionXAdminInterface, 'idPublicacion' | 'idAdmin'>
-
-
-export interface SeccionXProductoXMarketInterface {
+export interface SeccionInterface {
   idSeccion: string
   nombreSeccion: string
   idProducto: string
   idMarket: string
 }
 
-export type SeccionInterface = Omit<SeccionXProductoXMarketInterface, 'idProducto' | 'idMarket'>
-
-export enum EnumState {
-  Malo = 'Malo',
-  MedianamenteMalo = 'Medio malo',
-  Intermedio = 'Intermedio',
-  MedianamenteBueno = 'Medio bueno',
-  Buena = 'Bueno',
-
-}
+//export type SeccionInterface = Omit<SeccionXProductoXMarketInterface, 'idProducto' | 'idMarket'>
 
 export interface ProductInterface {
   idProducto: string

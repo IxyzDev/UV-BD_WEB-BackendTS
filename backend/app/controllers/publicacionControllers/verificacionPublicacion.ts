@@ -1,58 +1,56 @@
-import { EnumState } from '../../interfaces/types'
+import { EstadosPublicacion } from '../../interfaces/types'
 import db from '../../models'
 const usuario = db.Usuario
 const producto = db.Producto
 
-export const parseState = (StateFromRequest: any): EnumState => {
-  if (!isString(StateFromRequest) || !isState(StateFromRequest)) {
-    throw new Error('Error al ingresar el estado de la publicacion')
-  }
-  return StateFromRequest
-}
-
-export const parsePhoto = (PhotoFromRequest: any): string => {
-  if (!isString(PhotoFromRequest)) {
-    throw new Error('Error en la fotografia de la publicacion')
-  }
-  return PhotoFromRequest
-}
-
-export const parsePrice = (priceFromRequest: any): number => {
-  if (!isNumber(priceFromRequest)) {
-    throw new Error('EL valor introducido al producto no es valido (error desde publicacion)')
-  }
-
-  return priceFromRequest
-}
-
-export const parseTittle = (TittleFromRequest: any): string => {
-  if (!isString(TittleFromRequest)) {
-    throw new Error('EL titulo de la publicacion no es valido')
-  }
-  return TittleFromRequest
-}
-
-export const parseDescription = (DescriptionFromRequest: any): string => {
-  if (!isString(DescriptionFromRequest)) { 
-    throw new Error('La description entregada no es valida')
-  }
-  return DescriptionFromRequest
-}
-
-
-export const parseUserRut = (UserRutRequest: any): string => {
-  if (!isString(UserRutRequest)) {
+export const parseRutUsuario = (RutUsuarioFromRequest: any): string => {
+  if (!isString(RutUsuarioFromRequest)) {
     throw new Error('EL rut es incorrecto')
   }
-  return UserRutRequest
+  return RutUsuarioFromRequest
 }
-
 
 export const parseIdProducto = (IdProductoRequest: any): string => {
   if (!isString(IdProductoRequest)) {
     throw new Error('El id del producto es incorrecto')
   }
   return IdProductoRequest
+}
+
+export const parseFotoPublicacion = (FotoPublicacionFromRequest: any): string => {
+  if (!isString(FotoPublicacionFromRequest)) {
+    throw new Error('Error en la fotografia de la publicacion')
+  }
+  return FotoPublicacionFromRequest
+}
+
+export const parsePrecioPublicacion = (PrecioPublicacionFromRequest: any): number => {
+  if (!isNumber(PrecioPublicacionFromRequest)) {
+    throw new Error('EL valor introducido al producto no es valido (error desde publicacion)')
+  }
+
+  return PrecioPublicacionFromRequest
+}
+
+export const parseEstadoPublicacion = (EstadoPublicacionFromRequest: any): EstadosPublicacion => {
+  if (!isString(EstadoPublicacionFromRequest) || !isState(EstadoPublicacionFromRequest)) {
+    throw new Error('Error al ingresar el estado de la publicacion')
+  }
+  return EstadoPublicacionFromRequest
+}
+
+export const parseTituloPublicacion = (TituloPublicacionFromRequest: any): string => {
+  if (!isString(TituloPublicacionFromRequest)) {
+    throw new Error('EL titulo de la publicacion no es valido')
+  }
+  return TituloPublicacionFromRequest
+}
+
+export const parseDescripcionPublicacion = (DescripcionPublicacionFromRequest: any): string => {
+  if (!isString(DescripcionPublicacionFromRequest)) { 
+    throw new Error('La DescripcionPublicacion entregada no es valida')
+  }
+  return DescripcionPublicacionFromRequest
 }
 
 export const isRutUsuario = async (param: any): Promise<boolean> => {
@@ -85,7 +83,7 @@ export const isIdProducto = async (param: any): Promise<boolean> => {
 
 
 export const isState = (param: any): boolean => {
-  return Object.values(EnumState).includes(param)
+  return Object.values(EstadosPublicacion).includes(param)
 }
 
 export const isString = (string: string): boolean => {

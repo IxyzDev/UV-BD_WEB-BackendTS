@@ -1,69 +1,69 @@
 import { Model } from 'sequelize'
 
-import { PublicacionXUserXProductoInterface, EnumState } from '../interfaces/types'
+import { PublicacionInterface, EstadosPublicacion } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Publicacion extends Model<PublicacionXUserXProductoInterface>
-    implements PublicacionXUserXProductoInterface {
+class Publicacion extends Model<PublicacionInterface>
+  implements PublicacionInterface {
     idPublicacion!: string
-    photo!: string
-    price!: number
-    state!: EnumState
-    title!: string
-    description!: string
-    userRut!: string
+    rutUsuario!: string
     idProducto!: string
+    fotoPublicacion!: string
+    precioPublicacion!: number
+    estadoPublicacion!: EstadosPublicacion
+    tituloPublicacion!: string
+    descripcionPublicacion!: string
 
-    static associate (models: any) {
-      // Publicacion.belongsTo(models.Usuario)
-      Publicacion.hasMany(models.Gestion, {
-        foreignKey: 'idPublicacion',
-        foreignKeyConstraint: true
-      })
-    }
+  static associate (models: any) {
+    // Publicacion.belongsTo(models.Usuario)
+    Publicacion.hasMany(models.Gestion, {
+      foreignKey: 'idPublicacion',
+      foreignKeyConstraint: true
+    })
   }
-  Publicacion.init({
-    idPublicacion: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      primaryKey: true
-    },
-    photo: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    price: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-      allowNull: false
-    },
-    state: {
-      type: DataTypes.STRING,
-      // Atributo de tipo enum declarado en la interfaz
-      allowNull: false
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+}
+Publicacion.init({
+  idPublicacion: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    primaryKey: true
+  },
+  fotoPublicacion: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  precioPublicacion: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+    allowNull: false
+  },
+  estadoPublicacion: {
+    type: DataTypes.STRING,
+    // Atributo de tipo enum declarado en la interfaz
+    allowNull: false
+  },
+  tituloPublicacion: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  descripcionPublicacion: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
     
-    // Foreign keys
-    userRut: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    idProducto: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  }, {
-    sequelize,
-    timestamps: false,
-    modelName: 'Publicacion'
+  // Foreign keys
+  rutUsuario: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  idProducto: {
+  type: DataTypes.STRING,
+  allowNull: false
+  }
+}, {
+  sequelize,
+  timestamps: false,
+  modelName: 'Publicacion'
   })
   return Publicacion
 }

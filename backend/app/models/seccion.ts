@@ -1,10 +1,10 @@
 import { Model } from 'sequelize'
 
-import { SeccionXProductoXMarketInterface } from '../interfaces/types'
+import { SeccionInterface } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Seccion extends Model <SeccionXProductoXMarketInterface>
-    implements SeccionXProductoXMarketInterface {
+  class Seccion extends Model <SeccionInterface>
+    implements SeccionInterface {
     idSeccion!: string
     nombreSeccion!: string
     idProducto!: string

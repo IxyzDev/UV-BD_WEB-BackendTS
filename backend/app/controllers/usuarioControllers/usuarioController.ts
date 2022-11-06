@@ -9,14 +9,14 @@ export const getUsuarios = async (): Promise< UserInterface[]> => {
     return usuarios
   }
   
-  export const postUsuario = (object: any):  UserInterface => {
-    const newEntry:  UserInterface = {
-    userRut: v.parseUserRut(object.userRut),
-    userName: v.parseUserName(object.userName),
-    userEmail: v.parseUserEmail(object.userEmail),
-    userPassword: v.parseUserPassword(object.userPassword),
-    userAddress: v.parseUserAddress(object.userAddress)
-    }
-  
-    return newEntry
+export const postUsuario = (object: any):  UserInterface => {
+  const newEntry:  UserInterface = {
+  rutUsuario: v.parseRutUsuario(object.rutUsuario),
+  nombreUsuario: v.parseNombreUsuario(object.nombreUsuario),
+  correoUsuario: v.parseCorreoUsuario(object.correoUsuario),
+  contrasenaUsuario: v.parseContrasenaUsuario(object.contrasenaUsuario),
+  direccionUsuario: v.parseDireccionUsuario(object.direccionUsuario)
   }
+  
+  return newEntry
+}
