@@ -1,25 +1,34 @@
 import db from '../../models'
-import { PublicacionInterface } from '../../interfaces/types'
+import { PublicacionInterface, PublicacionWithoutRutUsuario } from '../../interfaces/types'
 import { v4 as uuidv4 } from 'uuid'
 import * as v from "./verificacionPublicacion"
 
 const publicacion = db.Publicacion
+
+const publicacionInterface: PublicacionInterface[] = publicacion as PublicacionInterface[]
 
 export const getPublicaciones = async (): Promise<PublicacionInterface[]> => {
   const publicaciones = await publicacion.findAll({ where: {} })
   return publicaciones
 }
 
-export const VerifUserXProducto =  async (param: any): Promise<boolean> => {
-  const verifRut = await v.isRutUsuario(param.userRut)
-  const verifId = await v.isIdProducto(param.idProducto)
-  if (!verifRut) {
-    throw new Error("Rut es incorrecto")
-  }
-  if (!verifId) {
-    throw new Error("Id es incorrecto")
-  }
-  return true
+// Consulta que retorna la informacion perteneciente a una publicacion respetando la privacidad del rut del usuario
+export const getPublicacionWithoutRutUsuario = (): PublicacionWithoutRutUsuario[] => 
+publicacionInterface.map(({ idPublicacion, idProducto, fotoPublicacion, precioPublicacion, estadoPublicacion, tituloPublicacion, descripcionPublicacion }) => {
+    return {
+      idPublicacion, 
+      idProducto,
+      fotoPublicacion,
+      precioPublicacion,
+      estadoPublicacion,
+      tituloPublicacion,
+      descripcionPublicacion
+    }
+})
+
+export const getPu = async (): Promise<PublicacionWithoutRutUsuario[]> => {
+  const pu = await publicacion.findAll({ where: {} })
+  return pu
 }
 
 export const postPublicacion = (object: any): PublicacionInterface  => {
@@ -34,4 +43,16 @@ export const postPublicacion = (object: any): PublicacionInterface  => {
     descripcionPublicacion: v.parseDescripcionPublicacion(object.descripcionPublicacion),
   }
   return newEntry
+}
+
+export const VerifUserXProducto =  async (param: any): Promise<boolean> => {
+  const verifRut = await v.isRutUsuario(param.rutUsuario)
+  const verifId = await v.isIdProducto(param.idProducto)
+  if (!verifRut) {
+    throw new Error("Rut es incorrecto")
+  }
+  if (!verifId) {
+    throw new Error("Id es incorrecto")
+  }
+  return true
 }

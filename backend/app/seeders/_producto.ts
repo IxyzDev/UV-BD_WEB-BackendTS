@@ -1,7 +1,7 @@
 export const producto = [
     {
-        "productName": "platano",
-        "brand": "Lays",
-        "type": "Alimento"
+        "nombreProducto": "platano",
+        "marcaProducto": "Lays",
+        "tipoProducto": "Alimento"
     }
 ]
