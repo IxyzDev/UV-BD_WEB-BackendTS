@@ -1,13 +1,14 @@
+
 export interface StoreItemProps {
-  Cantidad: number
-  idPublicacion: string
-  idProducto: string
+  id: number
   name: string
   description: string;
   state: string;
   price: number
   imgUrl: string
 }
+export type StoreItemPropsCard = Omit<StoreItemProps, 'description' | 'state'>
+export type StoreItemsProps = Omit<StoreItemProps, "name" | "description" | "state" | "price" >
 
 export type CartItemProps = {
   id: number
@@ -15,6 +16,7 @@ export type CartItemProps = {
 }
 
 export type StoreItemPropsFromApi = Array <{
+  id: number
   idPublicacion: string
   idProducto: string
   fotoPublicacion: string
