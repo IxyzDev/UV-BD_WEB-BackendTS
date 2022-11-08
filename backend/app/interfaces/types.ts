@@ -34,9 +34,9 @@ export type PublicacionWithoutRutUsuario = Omit<PublicacionInterface, 'rutUsuari
 
 export enum EstadosPublicacion {
   Malo = 'Malo',
-  MedianamenteMalo = 'Medianamente malo',
+  MedianamenteMalo = 'MedianamenteMalo',
   Intermedio = 'Intermedio',
-  MedianamenteBueno = 'Medianamente bueno',
+  MedianamenteBueno = 'MedianamenteBueno',
   Buena = 'Bueno',
 }
 
@@ -47,6 +47,10 @@ export interface UserInterface {
   contrasenaUsuario: string
   direccionUsuario: string
 }
+
+export type CorreoUsuario = Pick<UserInterface, 'correoUsuario' >
+
+
 //export type SeccionInterface = Omit<SeccionXProductoXMercadoInterface, 'idProducto' | 'idMercado'>
 export interface ProductInterface {
   idProducto: string

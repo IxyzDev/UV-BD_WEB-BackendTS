@@ -4,7 +4,7 @@ import db from '../models'
 
 const router = express.Router()
 
-router.get('/readall', async (_req: Request, res: Response) => {
+router.get('/read', async (_req: Request, res: Response) => {
   try {
     const publicaciones = await publicacionController.getPublicaciones()
     return res.json(publicaciones)
@@ -13,9 +13,9 @@ router.get('/readall', async (_req: Request, res: Response) => {
   }
 })
 
-router.get("/read", async (_req: Request, res: Response) => {
+router.get("/read/:estadoPublicacion", async (req: Request, res: Response) => {
   try {
-    const publicacionWithoutRutUsuario = await publicacionController.getPu()
+    const publicacionWithoutRutUsuario = await publicacionController.getPublicacionWithoutRutUsuario(req.params.estadoPublicacion)
     return res.json(publicacionWithoutRutUsuario)
   } catch (error) {
     return res.json({ msq: 'Error al mostrar todas las publicaciones sin el rut del usuario', error})

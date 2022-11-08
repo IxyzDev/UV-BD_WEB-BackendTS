@@ -5,31 +5,29 @@ import * as v from "./verificacionPublicacion"
 
 const publicacion = db.Publicacion
 
-const publicacionInterface: PublicacionInterface[] = publicacion as PublicacionInterface[]
-
 export const getPublicaciones = async (): Promise<PublicacionInterface[]> => {
   const publicaciones = await publicacion.findAll({ where: {} })
   return publicaciones
 }
 
 // Consulta que retorna la informacion perteneciente a una publicacion respetando la privacidad del rut del usuario
-export const getPublicacionWithoutRutUsuario = (): PublicacionWithoutRutUsuario[] => 
-publicacionInterface.map(({ idPublicacion, idProducto, fotoPublicacion, precioPublicacion, estadoPublicacion, tituloPublicacion, descripcionPublicacion }) => {
-    return {
-      idPublicacion, 
-      idProducto,
-      fotoPublicacion,
-      precioPublicacion,
-      estadoPublicacion,
-      tituloPublicacion,
-      descripcionPublicacion
-    }
-})
+export const getPublicacionWithoutRutUsuario = async (estadoPublicacion: string) => {
+  const usuariObtenido: PublicacionInterface[] = await publicacion.findAll({ where: { estadoPublicacion } })
 
-export const getPu = async (): Promise<PublicacionWithoutRutUsuario[]> => {
-  const pu = await publicacion.findAll({ where: {} })
-  return pu
-}
+  const publicacionWithoutRutUsuario: PublicacionWithoutRutUsuario[] =
+    usuariObtenido.map(({ idPublicacion, idProducto, fotoPublicacion, precioPublicacion, estadoPublicacion, tituloPublicacion, descripcionPublicacion }) => {
+      return {
+        idPublicacion,
+        idProducto,
+        fotoPublicacion,
+        precioPublicacion,
+        estadoPublicacion,
+        tituloPublicacion,
+        descripcionPublicacion
+      }
+    })
+  return publicacionWithoutRutUsuario
+} 
 
 export const postPublicacion = (object: any): PublicacionInterface  => {
   const newEntry: PublicacionInterface = {
