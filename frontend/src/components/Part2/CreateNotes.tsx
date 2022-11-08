@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from 'react-bootstrap/Button'
-import { StoreItemProps } from '../../Models/StoreItemProps'
+import { StoreItemProps } from '../../interfaces/StoreItemProps'
 import { Alert, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 
 interface ICreateNotesProps {

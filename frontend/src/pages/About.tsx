@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NotesList from '../components/Part2/NotesList';
 import CreateNotes from '../components/Part2/CreateNotes';
-import { StoreItemProps } from '../Models/StoreItemProps';
+import { StoreItemProps } from '../interfaces/StoreItemProps';
 import { Col, Container, Row } from 'react-bootstrap';
 
 /*export interface StoreItemProps {

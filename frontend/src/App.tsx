@@ -9,21 +9,6 @@ import { useEffect } from "react"
 
 function App() {
 
-  useEffect(() => {
-    fetch('http://localhost:3000/')
-      .then(res => res.json())
-      .then(Base_de_datos => {
-        console.log(Base_de_datos)
-        idPublicacion: string
-        idProducto: string
-        fotoPublicacion: string
-        precioPublicacion: number
-        estadoPublicacion: EstadosPublicacion
-        tituloPublicacion: string
-        descripcionPublicacion: string
-      })
-  }, [])
-
   return (
     <ShoppingCartProvider>
       <Navbar />
