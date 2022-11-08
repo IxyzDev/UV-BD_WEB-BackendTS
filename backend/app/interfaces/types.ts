@@ -23,6 +23,11 @@ export interface PublicacionInterface {
   descripcionPublicacion: string
 }
 
+// Privacidad del rut del usuario
+export type PublicacionWithoutRutUsuario = Omit<PublicacionInterface, 'rutUsuario'>
+
+// Hacer consulta
+
 //export type PublicacionInterface = Omit<PublicacionXUserXProductoInterface, 'userRut' | 'idProducto'>
 //export type PublicacionInterface = Pick<PublicacionXUserXProductoInterface, 'idPublicacion' | 'photo'|  'price'|  'state' |  'title' | 'description' >
 

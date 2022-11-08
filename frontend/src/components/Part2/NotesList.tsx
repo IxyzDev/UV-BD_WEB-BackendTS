@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Notes from './Notes';
-import { Note } from '../../Models/note.model';
+import { Note } from '../../interfaces/note.model';
 
 interface INotesListProps {
     notes: Note[],

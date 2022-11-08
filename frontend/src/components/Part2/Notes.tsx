@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { Card } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { Note } from '../../Models/note.model';
+import { Note } from '../../interfaces/note.model';
 
 interface INotesProps {
     note: Note,
     handleDelete: (id: string) => void
 }
+
+
+
 
 const Notes: React.FC<INotesProps> = ({note, handleDelete}) => {
     return (
