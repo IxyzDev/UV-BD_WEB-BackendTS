@@ -94,16 +94,16 @@
     "colId": "history",
     "containerId": "",
     "name": "Crear usuario",
-    "url": "localhost:3000/usuario/create",
-    "method": "POST",
+    "url": "localhost:3000/usuario/read",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-11-07T22:50:06.053Z",
-    "modified": "2022-11-07T22:51:02.153Z",
+    "modified": "2022-11-08T18:16:50.268Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"rutUsuario\": \"20.479.055-8\",\n  \"nombreUsuario\": \"Esteban\",\n  \"correoUsuario\": \"dies@gmail.com\",\n  \"contrasenaUsuario\": \"kevin7827\",\n  \"direccionUsuario\": \"En mi casa\"\n}",
+      "raw": "{\n  \"rutUsuario\": \"20.882.488-0\",\n  \"nombreUsuario\": \"Benjamin\",\n  \"correoUsuario\": \"Zaratechacana@gmail.com\",\n  \"contrasenaUsuario\": \"Alegod\",\n  \"direccionUsuario\": \"En una casa con puerta y ventana\"\n}",
       "form": []
     },
     "tests": []
