@@ -5,7 +5,6 @@ import { Store } from "./pages/Store"
 import { About } from "./pages/About"
 import { Navbar } from "./components/Navbar"
 import { ShoppingCartProvider } from "./context/ShoppingCartContext"
-import { useEffect } from "react"
 
 function App() {
 

@@ -1,8 +1,9 @@
 import { Button, Stack } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
-//import storeItems from "../data/items.json"
+import storeItems from "../data/items.json"
 import { formatCurrency } from "../utilities/formatCurrency"
 import { useEffect, useState } from "react"
+import { StoreItemsProps } from "../interfaces/StoreItemProps"
 
 // Importacion de las interfaces
 import { StoreItemPropsFromApi, CartItemProps, StoreItemProps } from "../interfaces/StoreItemProps";
@@ -13,22 +14,15 @@ interface ItemState {
   newItem: number 
 }
 
-// EStado inicial
-const [itemState, setItemState] = useState<ItemState["itemsList"]>([])
-
-// Obtener las publicaciones a mostrar desde la base de datos
-useEffect(() => {
-  const fetchProps = (): Promise<StoreItemPropsFromApi> => {
-    return fetch('http://localhost:3000/publicacion/read').then(res => res.json())
-  }
 
 // Mapear las respues del API
 const mapFromApiStoreItemPropsFromApi = (apiResponse: StoreItemPropsFromApi): 
 Array<StoreItemProps> => {
   return apiResponse.map(itemFromApi => {
     const {
-    idPublicacion: idPublicacion,
-    idProducto: idProducto,
+    id : id,
+    idPublicacion,
+    idProducto,
     fotoPublicacion: imgUrl,
     precioPublicacion: price,
     estadoPublicacion: state,
@@ -38,8 +32,7 @@ Array<StoreItemProps> => {
 
     // Retornamos las variables entrantes
     return {
-      idPublicacion,
-      idProducto,
+      id,
       name,
       description,
       state,
@@ -48,15 +41,23 @@ Array<StoreItemProps> => {
     }
   })
 }
+export default function InitialState() {
+  // EStado inicial
+  const [itemState, setItemState] = useState<ItemState["itemsList"]>([])
+  
+  // Obtener las publicaciones a mostrar desde la base de datos
+  useEffect(() => {
+    const fetchProps = (): Promise<StoreItemPropsFromApi> => {
+      return fetch('http://localhost:3000/publicacion/read').then(res => res.json())
+    }
+    fetchProps()
+    .then(mapFromApiStoreItemPropsFromApi)
+    .then(setItemState)
+  
+  }, [])
+  }
 
-fetchProps()
-  .then(mapFromApiStoreItemPropsFromApi)
-  .then(setItemState)
 
-}, [])
- //patrocina,  toallitas femeninas , el buen policia,= no se te escapa un chorro. :) 
- // pd : mañana te llevo una dona con crema pastelera bañada en chocolate :) 
- // QUE RICOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 /**
 useEffect(() => {
   fetch('http://localhost:3000/')
@@ -67,9 +68,11 @@ useEffect(() => {
 }, [])
 **/
 
+
+
 export function CartItem({ id, quantity }: CartItemProps) {
   const { removeFromCart } = useShoppingCart()
-  const item = setItemState.find(i => i.id === id)
+  const item = storeItems.find(i => i.id === id)
   if (item == null) return null
 
   return (

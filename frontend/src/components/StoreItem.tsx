@@ -2,17 +2,19 @@ import { Button, Card } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency } from "../utilities/formatCurrency"
 import { StoreItemProps } from "../interfaces/StoreItemProps" 
+import { StoreItemPropsCard } from "../interfaces/StoreItemProps"
 
 //esto de aqui abajo es
 
-export function StoreItem({ Cantidad, name, price, imgUrl }: StoreItemProps) {
+
+export function StoreItem({ id, name, price, imgUrl }: StoreItemPropsCard) {
   const {
     getItemQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart,
   } = useShoppingCart()
-  const quantity = getItemQuantity(Cantidad)
+  const quantity = getItemQuantity(id)
 
   return (
     <Card className="h-100">
@@ -29,7 +31,7 @@ export function StoreItem({ Cantidad, name, price, imgUrl }: StoreItemProps) {
         </Card.Title>
         <div className="mt-auto">
           {quantity === 0 ? (
-            <Button className="w-100" onClick={() => increaseCartQuantity(Cantidad)}>
+            <Button className="w-100" onClick={() => increaseCartQuantity(id)}>
               + Add To Cart
             </Button>
           ) : (
@@ -41,14 +43,14 @@ export function StoreItem({ Cantidad, name, price, imgUrl }: StoreItemProps) {
                 className="d-flex align-items-center justify-content-center"
                 style={{ gap: ".5rem" }}
               >
-                <Button onClick={() => decreaseCartQuantity(Cantidad)}>-</Button>
+                <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
                 <div>
                   <span className="fs-3">{quantity}</span> in cart
                 </div>
-                <Button onClick={() => increaseCartQuantity(Cantidad)}>+</Button>
+                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
               </div>
               <Button
-                onClick={() => removeFromCart(Cantidad)}
+                onClick={() => removeFromCart(id)}
                 variant="danger"
                 size="sm"
               >

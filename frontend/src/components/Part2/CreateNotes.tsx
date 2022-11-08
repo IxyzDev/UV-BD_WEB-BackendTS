@@ -7,11 +7,13 @@ interface ICreateNotesProps {
     notes: StoreItemProps[],
     setNotes: React.Dispatch<React.SetStateAction<StoreItemProps[]>>
 }
-/*name: string;
-    description: string;
-    state: string;
-    price: number;
-    imgUrl: string; */
+/*idPublicacion: string
+  idProducto: string
+  name: string
+  description: string;
+  state: string;
+  price: number
+  imgUrl: string*/
 const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({notes, setNotes}) => {
     const [error, setError] = React.useState<string>("");
     const nameRef = React.useRef<HTMLInputElement | null>(null);
