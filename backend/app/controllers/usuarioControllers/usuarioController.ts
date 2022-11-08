@@ -3,25 +3,24 @@ import { UserInterface, CorreoUsuario } from '../../interfaces/types'
 import * as v from "./verificacionUsuario"
 
 const usuario = db.Usuario
-const UserInterface: UserInterface[] = usuario as UserInterface[]
 
 export const getUsuarios = async (): Promise <UserInterface[]> => {
-    const usuarios = await usuario.findAll({ where: {} })
+    const usuarios: UserInterface[] = await usuario.findAll({ where: {} })
     return usuarios
 }
 
 // Mostrar el correo del usuario según su rut
 export const getCorreoUsuario = async (rutUsuario: string)=> {
-  const correoUsuario = await usuario.findAll({ where: { rutUsuario } })
-  return correoUsuario
-}
+  const usuarioObtenido: UserInterface[] = await usuario.findAll({ where: { rutUsuario }})
 
-export const transformCorreoUsuario = (): CorreoUsuario[] =>
-  UserInterface.map(({correoUsuario}) => {
-    return {
-      correoUsuario
-    }
-  })
+  const correoUsuario: CorreoUsuario[] =
+    usuarioObtenido.map(({ correoUsuario }) => {
+      return {
+        correoUsuario
+      }
+    })
+  return correoUsuario
+} 
   
 export const postUsuario = (object: any):  UserInterface => {
   const newEntry:  UserInterface = {
