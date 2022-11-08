@@ -98,7 +98,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-11-07T22:50:06.053Z",
-    "modified": "2022-11-07T22:51:02.153Z",
+    "modified": "2022-11-08T14:23:43.362Z",
     "headers": [],
     "params": [],
     "body": {
@@ -142,15 +142,29 @@
     "tests": []
   },
   {
-    "_id": "993590a9-f964-4a8c-99c0-92765f2c062a",
+    "_id": "da508aeb-c3e8-45bb-94da-c9c190a73f85",
     "colId": "history",
     "containerId": "",
-    "name": "localhost:3000/usuario/read",
-    "url": "localhost:3000/usuario/read",
+    "name": "localhost:3000/usuario/read/20.479.055-8",
+    "url": "localhost:3000/usuario/read/20.479.055-8",
     "method": "GET",
     "sortNum": 0,
-    "created": "2022-11-07T22:56:38.655Z",
-    "modified": "2022-11-07T23:01:20.754Z",
+    "created": "2022-11-08T14:23:55.194Z",
+    "modified": "2022-11-08T16:40:26.818Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "664a8995-46e3-483a-af1b-0ad9f317d134",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3000/usuario/read/20",
+    "url": "localhost:3000/usuario/read/20",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-08T14:26:25.662Z",
+    "modified": "2022-11-08T14:28:03.253Z",
     "headers": [],
     "params": [],
     "tests": []

@@ -13,6 +13,16 @@ router.get('/read', async (_req: Request, res: Response) => {
   }
 })
 
+router.get('/read/:rutUsuario', async (req: Request, res: Response) => {
+  try {
+    console.log(req.params.rutUsuario)
+    const correoUsuarioOBtener = await usuarioController.getCorreoUsuario(req.params.rutUsuario)
+    return res.json(correoUsuarioOBtener)
+  } catch (error) {
+    return res.json({ msg: 'Error al el correo del usuario por su rut', error })
+  }
+})
+
 router.post('/create', async (req: Request, res: Response) => {
   try {
     const newUsuarioEntry = usuarioController.postUsuario({ ...req.body })

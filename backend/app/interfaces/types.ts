@@ -47,6 +47,10 @@ export interface UserInterface {
   contrasenaUsuario: string
   direccionUsuario: string
 }
+
+export type CorreoUsuario = Pick<UserInterface, 'correoUsuario' >
+
+
 //export type SeccionInterface = Omit<SeccionXProductoXMercadoInterface, 'idProducto' | 'idMercado'>
 export interface ProductInterface {
   idProducto: string
