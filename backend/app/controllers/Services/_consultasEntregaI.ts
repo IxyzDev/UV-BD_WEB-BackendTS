@@ -1,9 +1,3 @@
-// Mostrar todos los productos que se encuentran en un estado dado
-
-select pr.nombreProducto, pr.tipoProducto
-from Productos as pr join Publicacions as pu
-where pu.idProducto = pr.idProducto and pu.estadoPublicacion = "Ingrese Estado";
-
 // Muestra a los usuarios gestionados por un administrador
 
 select u.rutUsuario, u.nombreUsuario, pugad.idAdmin
