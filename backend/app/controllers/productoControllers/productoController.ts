@@ -7,7 +7,7 @@ const producto = db.Producto
 
 export const getProductos = async (): Promise<ProductInterface[]> => {
   const productos = await producto.findAll({ where: {}})
-    return productos
+  return productos
 }
 
 export const getAllProductosById = async (object: any): Promise<ProductInterface[]> => {
