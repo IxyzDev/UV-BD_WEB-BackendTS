@@ -1,14 +1,3 @@
-import db from '../../models'
-import { UserInterface } from '../../interfaces/types'
-
-const usuario = db.Usuario
-
-
-
-select correoUsuario
-from Usuarios
-where rut = "Ingrese rut";
-
 // Mostrar todos los productos que se encuentran en un estado dado
 
 select pr.nombreProducto, pr.tipoProducto

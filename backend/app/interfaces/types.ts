@@ -34,9 +34,9 @@ export type PublicacionWithoutRutUsuario = Omit<PublicacionInterface, 'rutUsuari
 
 export enum EstadosPublicacion {
   Malo = 'Malo',
-  MedianamenteMalo = 'Medianamente malo',
+  MedianamenteMalo = 'MedianamenteMalo',
   Intermedio = 'Intermedio',
-  MedianamenteBueno = 'Medianamente bueno',
+  MedianamenteBueno = 'MedianamenteBueno',
   Buena = 'Bueno',
 }
 
