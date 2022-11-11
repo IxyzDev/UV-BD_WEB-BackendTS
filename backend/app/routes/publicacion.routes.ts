@@ -4,6 +4,7 @@ import db from '../models'
 
 const router = express.Router()
 
+/*
 router.get('/read', async (_req: Request, res: Response) => {
   try {
     const publicaciones = await publicacionController.getPublicaciones()
@@ -12,7 +13,18 @@ router.get('/read', async (_req: Request, res: Response) => {
     return res.json({ msg: 'Error al mostrar las publicaciones', error })
   }
 })
+*/
 
+router.get('/read', async (_req: Request, res: Response) => {
+  try {
+    const publicaciones = await publicacionController.getPublicacionWithoutRutUsuario()
+    return res.json(publicaciones)
+  } catch (error) {
+    return res.json({ msg: 'Error al mostrar las publicaciones', error })
+  }
+})
+
+/*
 router.get("/read/:estadoPublicacion", async (req: Request, res: Response) => {
   try {
     const publicacionWithoutRutUsuario = await publicacionController.getPublicacionWithoutRutUsuario(req.params.estadoPublicacion)
@@ -21,6 +33,7 @@ router.get("/read/:estadoPublicacion", async (req: Request, res: Response) => {
     return res.json({ msq: 'Error al mostrar todas las publicaciones sin el rut del usuario', error})
   }
 })
+*/
 
 router.post('/create', async (req: Request, res: Response) => {
   try {

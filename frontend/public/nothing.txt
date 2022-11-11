@@ -1,0 +1,4 @@
+          <Button variant="info" size="lg" color="#adadad">
+            <div>{value.rutUsuario}</div>
+            
+          </Button>

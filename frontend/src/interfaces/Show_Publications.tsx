@@ -1,7 +1,9 @@
 export type resultProps = {
-    rutUsuario: string
-    nombreUsuario: string
-    correoUsuario: string
-    contrasenaUsuario: string
-    direccionUsuario: string
+  idPublicacion: string
+  idProducto: string
+  fotoPublicacion: string
+  precioPublicacion: number
+  estadoPublicacion: string
+  tituloPublicacion: string
+  descripcionPublicacion: string
   };
