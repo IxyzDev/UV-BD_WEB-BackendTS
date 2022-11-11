@@ -1,5 +1,5 @@
 import express from 'express'
-//import cors = require("cors");
+import cors = require("cors");
 import db from './models'
 
 // Importacion de las rutas
@@ -14,7 +14,7 @@ import gestionRouter from './routes/gestion.routes';
 const app = express()
 const PORT = 3000
 
-//(app.use(cors())
+app.use(cors())
 app.use(express.json()) // middleware que transforma la req.body a un json
 
 db.sequelize.sync().then(() => {
