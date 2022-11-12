@@ -1,11 +1,3 @@
-// Mostrar ordenando por nombre sección, nombre producto, nombre sección, nombre mercado, y dirección mercado, que pertenezcan a los nombres de mercados dados
-
-	select p.nombreProducto, s.nombreSeccion, sm.nombreMercado, sm.direccionMercado
-from Productos as p join(
-    Secciones as s join Mercados as m where(
-        m.nombreMercado in (“lista de nombre”)) as sm
-group by s.nombreSeccion
-
 // Mostrar ordenado por título de publicación, título publicación, descripción publicación y precio publicación, que pertenezcan a los tipos de producto entregados
 
 	select p.tituloPublicacion, p.descripcionPublicacion, p.precioPublicacion 

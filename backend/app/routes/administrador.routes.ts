@@ -4,25 +4,36 @@ import db from '../models'
 
 const router = express.Router()
 
-router.get('/read', async (_req: Request, res: Response) => {
+router.get('/mostrar', async (_req: Request, res: Response) => {
   try {
     const administradores = await administradorController.getAdministradores()
     return res.json(administradores)
   } catch (error) {
+    console.log(error)
     return res.json({ msg: 'Error al mostrar a los administradores' })
   }
 })
 
-router.post('/create', async (req: Request, res: Response) => {
+router.get('/mostrar/gestion', async (_req: Request, res: Response) => {
   try {
-    const newadministradorEntry = administradorController.postAdministrador({ ...req.body })
+    const administradoresObtenidos = await administradorController.getAdministradoressByGestionesRealizadas()
+    return res.json(administradoresObtenidos)
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al mostrar a los administradores que an realizado una gestion' })
+  }
+})
 
-    const record = db.Administrador.create(newadministradorEntry)
+router.post('/crear', async (req: Request, res: Response) => {
+  try {
+    const newAdministradorEntry = administradorController.postAdministrador({ ...req.body })
+
+    const record = db.Administrador.create(newAdministradorEntry)
 
     return res.json({ record, msg: 'administradores subidos correctamente' })
   } catch (error) {
     console.log(error)
-    return res.json({error, msg: 'Error al subir al nuevo administrador' })
+    return res.json({msg: 'Error al subir al nuevo administrador' })
   }
 })
 

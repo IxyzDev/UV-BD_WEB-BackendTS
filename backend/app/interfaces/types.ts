@@ -24,7 +24,7 @@ export interface PublicacionInterface {
 }
 
 // Privacidad del rut del usuario
-export type PublicacionWithoutRutUsuario = Omit<PublicacionInterface, 'rutUsuario'>
+//export type PublicacionWithoutRutUsuario = Omit<PublicacionInterface, 'rutUsuario'>
 
 // Hacer consulta
 
@@ -40,7 +40,7 @@ export enum EstadosPublicacion {
   Buena = 'Bueno',
 }
 
-export interface UserInterface {
+export interface UsuarioInterface {
   rutUsuario: string
   nombreUsuario: string
   correoUsuario: string
@@ -48,22 +48,16 @@ export interface UserInterface {
   direccionUsuario: string
 }
 
-export type CorreoUsuario = Pick<UserInterface, 'correoUsuario' >
+export type CorreoUsuario = Pick<UsuarioInterface , 'correoUsuario' >
 
+//interface Male extends Person
 
 //export type SeccionInterface = Omit<SeccionXProductoXMercadoInterface, 'idProducto' | 'idMercado'>
 export interface ProductInterface {
   idProducto: string
   nombreProducto: string
   marcaProducto: string
-  tipoProducto: TiposProducto
-}
-
-export enum TiposProducto {
-  Alimento = 'Alimento',
-  Limpieza = 'Limpieza',
-  Higiene = 'Higiene',
-  Alcohol = 'Alcohol'
+  tipoProducto: string
 }
 
 export interface SeccionInterface {
@@ -76,14 +70,6 @@ export interface SeccionInterface {
 
 export interface MercadoInterface {
   idMercado: string
-  nombreMercado: NombresMercado
+  nombreMercado: string
   direccionMercado: string
-}
-
-export enum NombresMercado {
-  SantaIsabel = 'Santa Isabel',
-  Lider = 'Lider',
-  Tottus = 'Tottus',
-  Unimarc = 'Unimarc',
-  Acuenta = 'Acuenta'
 }

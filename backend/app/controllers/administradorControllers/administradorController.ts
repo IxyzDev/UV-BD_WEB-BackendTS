@@ -5,9 +5,28 @@ import { v4 as uuidv4 } from 'uuid'
 
 const administrador = db.Administrador
 
-export const getAdministradores = async (): Promise< AdminInterface[]> => {
-  const administradors = await administrador.findAll({ where: {} })
-  return administradors
+// Otros modelos
+const gestion = db.Gestion
+
+export const getAdministradores = async (): Promise <AdminInterface[]> => {
+  const administradores = await administrador.findAll({ where: {} })
+  return administradores
+}
+
+export const getAdministradoressByGestionesRealizadas = async () => {
+
+  const publicacionByAdminObtenidos: AdminInterface[] = await administrador.findAll({
+    include: [
+      {
+        model: gestion,
+        attributes: [],
+        required: true,
+        order: ["tituloGestion"]
+      }
+    ]
+  })
+
+  return publicacionByAdminObtenidos
 }
   
 export const postAdministrador = (object: any):  AdminInterface => {

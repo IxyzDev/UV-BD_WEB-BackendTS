@@ -4,7 +4,7 @@ import db from '../models'
 
 const router = express.Router()
 
-router.get('/read', async (_req: Request, res: Response) => {
+router.get('/mostrar', async (_req: Request, res: Response) => {
   try {
     const secciones = await seccionController.getSecciones()
     return res.json(secciones)
@@ -13,7 +13,7 @@ router.get('/read', async (_req: Request, res: Response) => {
   }
 })
 
-router.post('/create', async (req: Request, res: Response) => {
+router.post('/crear', async (req: Request, res: Response) => {
   try {
     if (!await seccionController.VerifNewSeccion({ ...req.body })) {
       throw new Error('Error dentro de los parametros de identificacion')

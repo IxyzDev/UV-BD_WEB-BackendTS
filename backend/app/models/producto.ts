@@ -1,6 +1,6 @@
 import { Model } from 'sequelize'
 
-import { ProductInterface, TiposProducto } from '../interfaces/types'
+import { ProductInterface } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
 class Producto extends Model <ProductInterface>
@@ -8,13 +8,13 @@ class Producto extends Model <ProductInterface>
   idProducto!: string
   nombreProducto!: string
   marcaProducto!: string
-  tipoProducto!: TiposProducto
+  tipoProducto!: string
 
   static associate (models: any) {
     Producto.hasMany(models.Publicacion, {
       foreignKey: 'idProducto',
       foreignKeyConstraint: true
-    })
+    }),
     Producto.hasMany(models.Seccion, {
       foreignKey: 'idProducto',
       foreignKeyConstraint: true

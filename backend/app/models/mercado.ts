@@ -1,12 +1,12 @@
 import { Model } from 'sequelize'
 
-import { MercadoInterface, NombresMercado } from '../interfaces/types'
+import { MercadoInterface } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
   class Mercado extends Model <MercadoInterface>
     implements MercadoInterface {
     idMercado!: string
-    nombreMercado!: NombresMercado
+    nombreMercado!: string
     direccionMercado!: string
 
     static associate (models: any) {

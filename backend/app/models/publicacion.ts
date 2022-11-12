@@ -19,6 +19,10 @@ class Publicacion extends Model<PublicacionInterface>
     Publicacion.hasMany(models.Gestion, {
       foreignKey: 'idPublicacion',
       foreignKeyConstraint: true
+    }),
+    Publicacion.belongsTo(models.Producto, {
+      foreignKey: "idProducto",
+      foreignKeyConstraint: true
     })
   }
 }

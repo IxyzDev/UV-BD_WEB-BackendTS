@@ -15,7 +15,7 @@ router.get('/read', async (_req: Request, res: Response) => {
 })
 */
 
-router.get('/read', async (_req: Request, res: Response) => {
+router.get('/mostrar', async (_req: Request, res: Response) => {
   try {
     const publicaciones = await publicacionController.getPublicacionWithoutRutUsuario()
     return res.json(publicaciones)
@@ -24,18 +24,28 @@ router.get('/read', async (_req: Request, res: Response) => {
   }
 })
 
-/*
-router.get("/read/:estadoPublicacion", async (req: Request, res: Response) => {
+
+router.get("/mostrar/estado", async (req: Request, res: Response) => {
   try {
-    const publicacionWithoutRutUsuario = await publicacionController.getPublicacionWithoutRutUsuario(req.params.estadoPublicacion)
-    return res.json(publicacionWithoutRutUsuario)
+    const publicacionEstado = await publicacionController.getPublicacionByEstado({ ...req.body })
+    return res.json(publicacionEstado)
   } catch (error) {
-    return res.json({ msq: 'Error al mostrar todas las publicaciones sin el rut del usuario', error})
+    console.log(error)
+    return res.json({msg: 'Error al mostrar publicaciones por estado'})
   }
 })
-*/
 
-router.post('/create', async (req: Request, res: Response) => {
+router.get('/mostrar/tipo', async (req: Request, res: Response) => {
+  try {
+    const publicacionByTipoProducto = await publicacionController.getAllpublicacionByTipoProducto({ ...req.body })
+    return res.json(publicacionByTipoProducto)
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al mostrar los productos por un mercado' })
+  }
+})
+
+router.post('/crear', async (req: Request, res: Response) => {
   try {
     if (!await publicacionController.VerifUserXProducto({ ...req.body })) {
       throw new Error('Error dentro de los parametros de rut o  identificador de producto')
@@ -49,6 +59,17 @@ router.post('/create', async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error)
     return res.json({ msg: 'Error al crear una nueva publicacion' })
+  }
+})
+
+router.delete('/eliminar', async (req: Request, res: Response) => {
+  try {
+    const record = publicacionController.deletePublicacion({ ...req.body })
+
+    return res.json({ record, recordRecordmsg: 'Publicacion eliminado correctamente' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al eliminar al Publicacion' })
   }
 })
 
