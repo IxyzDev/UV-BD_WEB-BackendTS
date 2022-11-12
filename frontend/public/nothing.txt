@@ -2,3 +2,13 @@
             <div>{value.rutUsuario}</div>
             
           </Button>
+
+
+  idPublicacion: string
+  rutUsuario: string
+  idProducto: string
+  fotoPublicacion: string
+  precioPublicacion: number
+  estadoPublicacion: EstadosPublicacion
+  tituloPublicacion: string
+  descripcionPublicacion: string
