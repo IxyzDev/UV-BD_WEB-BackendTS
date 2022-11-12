@@ -4,7 +4,9 @@ import { v4 as uuidv4 } from 'uuid'
 import * as v from "./verificacionPublicacion"
 
 const publicacion = db.Publicacion
-//import { Op } from "sequelize"
+
+// Otros modelos
+const producto = db.Producto
 
 /*
 export const getPublicaciones = async (): Promise<PublicacionInterface[]> => {
@@ -22,11 +24,13 @@ export const getPublicacionWithoutRutUsuario = async () => {
 }
 
 // Retorna todas las publicaciones dadas las categorias entregadas
-export const getPublicacionByEstado = async (estado: string): Promise<PublicacionInterface[]> => {
+export const getPublicacionByEstado = async (object: any): Promise<PublicacionInterface[]> => {
+  const estoPublicacion = object.estadoPublicacion
+
   const publicaciones: PublicacionInterface[] = await publicacion.findAll({
     attributes: ["idPublicacion", "fotoPublicacion", "precioPublicacion", "estadoPublicacion", "tituloPublicacion", "descripcionPublicacion", "idProducto"],
     where: {
-      estadoPublicacion: v.parseEstadoPublicacion(estado)
+      estadoPublicacion: estoPublicacion
     }
   })
   if (publicaciones.length == 0) {
@@ -34,6 +38,29 @@ export const getPublicacionByEstado = async (estado: string): Promise<Publicacio
   }
   return publicaciones
 }
+
+// Retorna todas las publicaciones dado un arreglo de tipos de producto dados
+export const getAllpublicacionByTipoProducto = async (object: any) => {
+
+  const   tipoProducto = object.tipoProducto
+
+  const publicacionByTipoProducto: PublicacionInterface[] = await publicacion.findAll({
+    include: [
+      {
+        model: producto,
+        required: true,
+        where: {
+          tipoProducto: tipoProducto
+        },
+        order: ["tituloPublicacion"]
+      }
+    ]
+
+  })
+
+  return publicacionByTipoProducto
+}
+
 
 export const postPublicacion = (object: any): PublicacionInterface  => {
   const newEntry: PublicacionInterface = {

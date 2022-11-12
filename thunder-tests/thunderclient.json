@@ -192,16 +192,16 @@
     "colId": "31e857a4-9de1-4e2e-9803-b9b02228ec22",
     "containerId": "",
     "name": "Crear una seccion",
-    "url": "localhost:3000/seccion/read",
-    "method": "GET",
+    "url": "localhost:3000/seccion/crear",
+    "method": "POST",
     "sortNum": 10000,
     "created": "2022-11-12T08:23:33.724Z",
-    "modified": "2022-11-12T08:23:33.724Z",
+    "modified": "2022-11-12T20:09:21.374Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"nombreSeccion\": \"Helado\",\n    \"idProducto\": \"7ba2c999-7d29-42df-b77f-f9625e0965e3\",\n    \"idMarket\": \"9f8a4a6e-caaa-4b6d-9783-c7a9e29109a3\"\n}",
+      "raw": "{\n    \"nombreSeccion\": \"Pasillo A\",\n    \"idProducto\": \"1da74616-db73-42cc-a611-9fd26f1a8382\",\n    \"idMercado\": \"c240d306-912e-4f67-9681-23cfa1450ecf\"\n}",
       "form": []
     },
     "tests": []
@@ -253,12 +253,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-12T08:27:21.095Z",
-    "modified": "2022-11-12T08:29:26.148Z",
+    "modified": "2022-11-12T20:03:20.735Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n    \"nombreProducto\": \"Detergente\",\r\n    \"marcaProducto\": \"Clorinda\",\r\n    \"tipoProducto\": \"Limpieza\"\r\n}",
+      "raw": "{\n    \"nombreProducto\": \"Lolilipa\",\n    \"marcaProducto\": \"sanjuan\",\n    \"tipoProducto\": \"bebestible\"\n}",
       "form": []
     },
     "tests": []
@@ -329,9 +329,14 @@
     "method": "GET",
     "sortNum": 30000,
     "created": "2022-11-12T19:52:08.316Z",
-    "modified": "2022-11-12T19:52:21.603Z",
+    "modified": "2022-11-12T20:14:15.951Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"nombreMercado\" : [\"Lider\", \"Santa Isabel\"]\n}",
+      "form": []
+    },
     "tests": []
   },
   {
@@ -344,6 +349,81 @@
     "sortNum": 20000,
     "created": "2022-11-12T19:57:09.999Z",
     "modified": "2022-11-12T19:57:20.508Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7117e514-37b7-4ee0-bc4b-2b97188686d1",
+    "colId": "31e857a4-9de1-4e2e-9803-b9b02228ec22",
+    "containerId": "",
+    "name": "Mostrar secciones",
+    "url": "localhost:3000/seccion/mostrar",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-11-12T20:09:37.719Z",
+    "modified": "2022-11-12T20:09:55.666Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "8ad44c1f-2019-4b1c-927d-2be5bca5c6ca",
+    "colId": "7d6a50df-ee64-49fa-99fc-c886f06ad5d0",
+    "containerId": "",
+    "name": "Mostrar publicaciones dado un arreglo de tipo producto",
+    "url": "localhost:3000/publicacion/mostrar/tipo",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2022-11-12T21:51:46.612Z",
+    "modified": "2022-11-12T22:04:01.248Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"tipoProducto\": [\"Limpieza\", \"Alimento\"]\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "65c4500a-218d-463e-a944-42395505a2a8",
+    "colId": "14b5be49-ff6c-4d82-b17c-7e29907db52a",
+    "containerId": "",
+    "name": "Mostrar administradores que han realizado una gestion",
+    "url": "localhost:3000/admin/mostrar/gestion",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-11-12T22:25:52.867Z",
+    "modified": "2022-11-12T22:26:19.076Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "34916d9a-49f0-42f1-aee9-4713858a622f",
+    "colId": "01c51165-8c6d-4259-a2e6-fd9e209b29f8",
+    "containerId": "",
+    "name": "Mostrar usuarios que han realizado una publicacion",
+    "url": "localhost:3000/usuario/mostrar/publicacion",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2022-11-12T22:33:40.531Z",
+    "modified": "2022-11-12T22:33:54.170Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "50a7ec31-9b05-4abd-8ad5-c8b9cd4e09e4",
+    "colId": "de25e79d-2519-4dc2-a72f-ce813ec854d4",
+    "containerId": "",
+    "name": "Mostrar productos no seccion",
+    "url": "localhost:3000/producto/mostrar/noseccion",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-11-12T22:46:37.043Z",
+    "modified": "2022-11-12T22:46:49.906Z",
     "headers": [],
     "params": [],
     "tests": []

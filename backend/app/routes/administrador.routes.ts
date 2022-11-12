@@ -14,6 +14,16 @@ router.get('/mostrar', async (_req: Request, res: Response) => {
   }
 })
 
+router.get('/mostrar/gestion', async (_req: Request, res: Response) => {
+  try {
+    const administradoresObtenidos = await administradorController.getAdministradoressByGestionesRealizadas()
+    return res.json(administradoresObtenidos)
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al mostrar a los administradores que an realizado una gestion' })
+  }
+})
+
 router.post('/crear', async (req: Request, res: Response) => {
   try {
     const newAdministradorEntry = administradorController.postAdministrador({ ...req.body })

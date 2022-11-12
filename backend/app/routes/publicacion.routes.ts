@@ -25,9 +25,9 @@ router.get('/mostrar', async (_req: Request, res: Response) => {
 })
 
 
-router.get("/mostrar/:estado", async (req: Request, res: Response) => {
+router.get("/mostrar/estado", async (req: Request, res: Response) => {
   try {
-    const publicacionEstado = await publicacionController.getPublicacionByEstado(req.params.estado)
+    const publicacionEstado = await publicacionController.getPublicacionByEstado({ ...req.body })
     return res.json(publicacionEstado)
   } catch (error) {
     console.log(error)
@@ -35,6 +35,15 @@ router.get("/mostrar/:estado", async (req: Request, res: Response) => {
   }
 })
 
+router.get('/mostrar/tipo', async (req: Request, res: Response) => {
+  try {
+    const publicacionByTipoProducto = await publicacionController.getAllpublicacionByTipoProducto({ ...req.body })
+    return res.json(publicacionByTipoProducto)
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al mostrar los productos por un mercado' })
+  }
+})
 
 router.post('/crear', async (req: Request, res: Response) => {
   try {

@@ -16,9 +16,9 @@ router.get('/mostrar', async (_req: Request, res: Response) => {
   }
 })
 
-router.get('/mostrar/correo/:rutUsuario', async (req: Request, res: Response) => {
+router.get('/mostrar/correo', async (req: Request, res: Response) => {
   try {
-    const usuarios = await usuarioController.getCorreoUsuario(req.params.rutUsuario)
+    const usuarios = await usuarioController.getCorreoUsuario({... req.body})
     return res.json(usuarios)
   } catch (error) {
     console.log(error)
@@ -26,14 +26,23 @@ router.get('/mostrar/correo/:rutUsuario', async (req: Request, res: Response) =>
   }
 })
 
-router.get('/mostrar/admin/:idAdmin', async (req: Request, res: Response) => {
+router.get('/mostrar/admin', async (req: Request, res: Response) => {
   try {
-    console.log(req.params.idAdmin)
-    const usuarios = await usuarioController.getUsuariosGestionados(req.params.idAdmin)
+    const usuarios = await usuarioController.getUsuariosGestionados({... req.body})
     return res.json(usuarios)
   } catch (error) {
     console.log(error)
     return res.json({ msg: 'Error al mostrar correo del usuario por su rut' })
+  }
+})
+
+router.get('/mostrar/publicacion', async (_req: Request, res: Response) => {
+  try {
+    const usuariosObtenidos = await usuarioController.getUsuariosByPublicacionesRealizadas()
+    return res.json(usuariosObtenidos)
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al mostrar a los usuarios que an realizado una publicacion' })
   }
 })
 

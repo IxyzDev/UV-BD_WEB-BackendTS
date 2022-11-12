@@ -9,8 +9,15 @@ module.exports = (sequelize: any, DataTypes: any) => {
     nombreSeccion!: string
     idProducto!: string
     idMercado!: string
-    static associate (_models: any) {
-      //Seccion.belongsTo(models.Producto)
+    static associate (models: any) {
+      Seccion.belongsTo(models.Mercado, {
+        foreignKey: "idMercado",
+        foreignKeyConstraint: true
+      }),
+      Seccion.belongsTo(models.Producto, {
+        foreignKey: "idProducto",
+        foreignKeyConstraint: true
+      })
     }
   }
   Seccion.init({

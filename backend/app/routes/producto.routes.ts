@@ -24,6 +24,16 @@ router.get('/mostrar/mercado', async (req: Request, res: Response) => {
   }
 })
 
+router.get('/mostrar/noseccion', async (_req: Request, res: Response) => {
+  try {
+    const productosByNotSeccion = await productoController.getAllProductosByNotSeccion()
+    return res.json(productosByNotSeccion)
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al mostrar los productos por un mercado' })
+  }
+})
+
 router.post('/crear', async (req: Request, res: Response) => {
   try {
     const newProductosEntry = productoController.postProducto({ ...req.body })

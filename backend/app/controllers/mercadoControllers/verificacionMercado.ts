@@ -5,8 +5,6 @@ export const parseNombreMercado = (NombreMercadoFromRequest: any): string => {
   return NombreMercadoFromRequest
 }
 
-
-//https://es.stackoverflow.com/questions/142/validar-un-email-en-javascript-que-acepte-todos-los-caracteres-latinos
 export const parseDireccionMercado = (DireccionMercadoFromRequest: any): string => {
   if (!isString(DireccionMercadoFromRequest)) {
     throw new Error('La direccion del mercado no es correcta')

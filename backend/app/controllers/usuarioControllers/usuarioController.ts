@@ -7,6 +7,7 @@ const usuario = db.Usuario
 // Otras modelos
 const gestion = db.Gestion
 const publicacion = db.Publicacion
+const producto = db.Producto
 
 export const getUsuarios = async (): Promise <UsuarioInterface []> => {
     const usuarios: UsuarioInterface [] = await usuario.findAll({ 
@@ -16,7 +17,9 @@ export const getUsuarios = async (): Promise <UsuarioInterface []> => {
 }
 
 // Mostrar el correo del usuario según su rut
-export const getCorreoUsuario = async (rutUsuario: string): Promise<UsuarioInterface[]> => {
+export const getCorreoUsuario = async (object: any): Promise<UsuarioInterface[]> => {
+  const rutUsuario = object.rutUsuario
+
   const correoUsuario: UsuarioInterface [] = await usuario.findOne({ 
     attributes: ["correoUsuario"],
     where: { 
@@ -27,7 +30,9 @@ export const getCorreoUsuario = async (rutUsuario: string): Promise<UsuarioInter
 }
 
 // Obtener todos los usuarios que 
-export const getUsuariosGestionados = async (idAdminFromRequest: string): Promise<UsuarioInterface[]> => {
+export const getUsuariosGestionados = async (object: any): Promise<UsuarioInterface[]> => {
+  const idAdmin = object.idAdmin
+
   const usuarios = await usuario.findAll({
     attributes: ["rutUsuario", "nombreUsuario", "correoUsuario", "direccionUsuario" ],
     include: [     
@@ -39,7 +44,7 @@ export const getUsuariosGestionados = async (idAdminFromRequest: string): Promis
         
         attributes: [],
         where : {
-          idAdmin: idAdminFromRequest
+          idAdmin: idAdmin
         },
       },
       required: true,
@@ -48,6 +53,26 @@ export const getUsuariosGestionados = async (idAdminFromRequest: string): Promis
   });
 
   return usuarios;
+}
+
+export const getUsuariosByPublicacionesRealizadas = async () => {
+
+  const usuariosObtenidos: UsuarioInterface[] = await usuario.findAll({
+    include: [
+      {
+        model: publicacion,
+        attributes: ["tituloPublicacion"],
+        include: {
+          model: producto,
+          attributes: ["nombreProducto"],
+        },
+        required: true,
+        order: ["tituloPublicacion"]
+      }
+    ]
+  })
+
+  return usuariosObtenidos
 }
 
 export const updateContrasenaUsuario = async (object: any) => {

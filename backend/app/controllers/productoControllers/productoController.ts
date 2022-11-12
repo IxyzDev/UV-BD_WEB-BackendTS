@@ -5,19 +5,59 @@ import * as v from "./verificacionProducto"
 
 const producto = db.Producto
 
+// Otras BD
+const seccion = db.Seccion
+const mercado = db.Mercado
+
 export const getProductos = async (): Promise<ProductInterface[]> => {
   const productos = await producto.findAll({ where: {}})
   return productos
 }
 
 // 
-export const getAllProductosByMercado = async (_object: any) => {
-  const productosByMercado = await producto.findAll({
-    attributes: ["nombreProducto"]
+export const getAllProductosByMercado = async (object: any) => {
+
+  const nombreMercado = object.nombreMercado
+
+  const productosByMercado: ProductInterface[] = await producto.findAll({
+    attributes: ["nombreProducto"],
+    include: [
+      {
+        model: seccion,
+        attributes: ["nombreSeccion"],
+        include: {
+          model: mercado,
+          attributes: ["nombreMercado", "direccionMercado"],
+          where: {
+            nombreMercado: nombreMercado
+          }
+        },
+        required: true,
+        order: ["nombreSeccion"]
+      }
+    ]
 
   })
 
   return productosByMercado
+}
+
+export const getAllProductosByNotSeccion = async () => {
+  const productoByNoSeccion: ProductInterface[] = await seccion.findAll({
+    include: [
+      {
+        model: producto,
+        attributes: [],
+        where: {
+          
+        }
+      }
+    ],
+    order: ["tipoProducto"]
+
+  })
+
+  return productoByNoSeccion
 }
 
 

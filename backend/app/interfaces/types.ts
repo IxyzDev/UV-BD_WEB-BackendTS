@@ -57,14 +57,7 @@ export interface ProductInterface {
   idProducto: string
   nombreProducto: string
   marcaProducto: string
-  tipoProducto: TiposProducto
-}
-
-export enum TiposProducto {
-  Alimento = 'Alimento',
-  Limpieza = 'Limpieza',
-  Higiene = 'Higiene',
-  Alcohol = 'Alcohol'
+  tipoProducto: string
 }
 
 export interface SeccionInterface {
