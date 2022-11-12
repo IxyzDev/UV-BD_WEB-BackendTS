@@ -103,7 +103,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"rutUsuario\": \"21.479.053-4\",\n  \"nombreUsuario\": \"Agustin\",\n  \"correoUsuario\": \"holasalinasdeajte@alumnos.uv.cl\",\n  \"contrasenaUsuario\": \"kevin7827\",\n  \"direccionUsuario\": \"En mi casa\"\n}",
+      "raw": "{\n  \"rutUsuario\": \"21.439.053-4\",\n  \"nombreUsuario\": \"Agustinaaaaaaa\",\n  \"correoUsuario\": \"holasalinasdeajte@alumnos.uv.cl\",\n  \"contrasenaUsuario\": \"kevin72222827\",\n  \"direccionUsuario\": \"En mi caserea\"\n}",
       "form": []
     },
     "tests": []
