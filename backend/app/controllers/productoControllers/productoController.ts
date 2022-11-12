@@ -10,6 +10,17 @@ export const getProductos = async (): Promise<ProductInterface[]> => {
   return productos
 }
 
+// 
+export const getAllProductosByMercado = async (_object: any) => {
+  const productosByMercado = await producto.findAll({
+    attributes: ["nombreProducto"]
+
+  })
+
+  return productosByMercado
+}
+
+
 export const getAllProductosById = async (object: any): Promise<ProductInterface[]> => {
   const productos = await producto.findAll({ where: { idPRoducto: object } });
   return productos

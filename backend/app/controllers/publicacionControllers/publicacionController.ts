@@ -1,5 +1,5 @@
 import db from '../../models'
-import { PublicacionInterface, PublicacionWithoutRutUsuario } from '../../interfaces/types'
+import { PublicacionInterface} from '../../interfaces/types'
 import { v4 as uuidv4 } from 'uuid'
 import * as v from "./verificacionPublicacion"
 
@@ -14,41 +14,26 @@ export const getPublicaciones = async (): Promise<PublicacionInterface[]> => {
 */
 
 // Consulta que retorna la informacion perteneciente a una publicacion respetando la privacidad del rut del usuario
-export const getPublicacionWithoutRutUsuario = async (): Promise<PublicacionWithoutRutUsuario[]> => {
-  const publicaciones: PublicacionInterface[] = await publicacion.findAll({ where: { } })
-  return parseWithoutRutUsuario(publicaciones)
+export const getPublicacionWithoutRutUsuario = async () => {
+  const publicaciones: PublicacionInterface[] = await publicacion.findAll({ 
+    attributes: ["idPublicacion", "fotoPublicacion", "precioPublicacion", "estadoPublicacion", "tituloPublicacion", "descripcionPublicacion", "idProducto"],
+    where: { } })
+  return publicaciones
 }
 
 // Retorna todas las publicaciones dadas las categorias entregadas
-export const getPublicacionByEstado = async (estado: string): Promise<PublicacionWithoutRutUsuario[]> => {
+export const getPublicacionByEstado = async (estado: string): Promise<PublicacionInterface[]> => {
   const publicaciones: PublicacionInterface[] = await publicacion.findAll({
+    attributes: ["idPublicacion", "fotoPublicacion", "precioPublicacion", "estadoPublicacion", "tituloPublicacion", "descripcionPublicacion", "idProducto"],
     where: {
-      estadoPublicacion: estado
+      estadoPublicacion: v.parseEstadoPublicacion(estado)
     }
   })
   if (publicaciones.length == 0) {
     throw new Error('No se encontraron publicaciones cn ese estado')
   }
-  return parseWithoutRutUsuario(publicaciones)
+  return publicaciones
 }
-
-export const parseWithoutRutUsuario = (publicaciones: PublicacionInterface[]): PublicacionWithoutRutUsuario[] => {
-  const publicacionWithoutRutUsuario: PublicacionWithoutRutUsuario[] =
-    publicaciones.map(({ idPublicacion, idProducto, fotoPublicacion, precioPublicacion, estadoPublicacion, tituloPublicacion, descripcionPublicacion }) => {
-      return {
-        idPublicacion,
-        idProducto,
-        fotoPublicacion,
-        precioPublicacion,
-        estadoPublicacion,
-        tituloPublicacion,
-        descripcionPublicacion
-      }
-    })
-  return publicacionWithoutRutUsuario
-}
-
-
 
 export const postPublicacion = (object: any): PublicacionInterface  => {
   const newEntry: PublicacionInterface = {
@@ -62,6 +47,17 @@ export const postPublicacion = (object: any): PublicacionInterface  => {
     descripcionPublicacion: v.parseDescripcionPublicacion(object.descripcionPublicacion),
   }
   return newEntry
+}
+
+export const deletePublicacion= async (object: any) => {
+  const publicacionDelete = await publicacion.findOne({
+    where: {
+      idPublicacion: v.parseRutUsuario(object.idPublicacion)
+    }
+  })
+
+  const publicacionDeleted = await publicacionDelete.destroy();
+  return publicacionDeleted;
 }
 
 export const VerifUserXProducto =  async (param: any): Promise<boolean> => {

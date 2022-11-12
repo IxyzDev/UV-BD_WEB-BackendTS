@@ -24,7 +24,7 @@ export interface PublicacionInterface {
 }
 
 // Privacidad del rut del usuario
-export type PublicacionWithoutRutUsuario = Omit<PublicacionInterface, 'rutUsuario'>
+//export type PublicacionWithoutRutUsuario = Omit<PublicacionInterface, 'rutUsuario'>
 
 // Hacer consulta
 
@@ -77,14 +77,6 @@ export interface SeccionInterface {
 
 export interface MercadoInterface {
   idMercado: string
-  nombreMercado: NombresMercado
+  nombreMercado: string
   direccionMercado: string
-}
-
-export enum NombresMercado {
-  SantaIsabel = 'Santa Isabel',
-  Lider = 'Lider',
-  Tottus = 'Tottus',
-  Unimarc = 'Unimarc',
-  Acuenta = 'Acuenta'
 }

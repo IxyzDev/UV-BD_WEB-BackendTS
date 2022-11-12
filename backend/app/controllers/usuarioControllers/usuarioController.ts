@@ -1,109 +1,83 @@
 import db from '../../models'
-//import { Op } from "sequelize";
-import { UsuarioInterface , CorreoUsuario } from '../../interfaces/types'
+import { UsuarioInterface } from '../../interfaces/types'
 import * as v from "./verificacionUsuario"
 
 const usuario = db.Usuario
 
-
 // Otras modelos
-//const gestion = db.Gestion
+const gestion = db.Gestion
 const publicacion = db.Publicacion
 
 export const getUsuarios = async (): Promise <UsuarioInterface []> => {
-    const usuarios: UsuarioInterface [] = await usuario.findAll({ where: {} })
+    const usuarios: UsuarioInterface [] = await usuario.findAll({ 
+      attributes: ["rutUsuario", "nombreUsuario", "correoUsuario", "direccionUsuario"],
+      where: {} })
     return usuarios
 }
 
 // Mostrar el correo del usuario según su rut
-export const getCorreoUsuario = async (rutUsuario: string): Promise <CorreoUsuario[]> => {
-  if (!v.isValidRut(rutUsuario)) {
-    throw new Error('El rut entregado no es valido')
-  }
-  
-  const usuarios: UsuarioInterface [] = await usuario.findAll({ where: { 
-    rutUsuario: rutUsuario
+export const getCorreoUsuario = async (rutUsuario: string): Promise<UsuarioInterface[]> => {
+  const correoUsuario: UsuarioInterface [] = await usuario.findOne({ 
+    attributes: ["correoUsuario"],
+    where: { 
+      rutUsuario: v.parseRutUsuario(rutUsuario)
    }})
 
-  // Mapeo a solamente el correo del usuario
-  const correoUsuario: CorreoUsuario[] =
-    usuarios.map(({ correoUsuario }) => {
-      return {
-        correoUsuario
-      }
-    })
-
-  // Retorna unicamente el correo, como un string pero no como un json
-  // console.log(usuario[0].correoUsuario)
   return correoUsuario
-} 
+}
 
-
-
-export const getUsuariosGestionados = async (_idAdmin: string): Promise<UsuarioInterface[]> => {
+// Obtener todos los usuarios que 
+export const getUsuariosGestionados = async (idAdminFromRequest: string): Promise<UsuarioInterface[]> => {
   const usuarios = await usuario.findAll({
-    attributes: ["rutUsuario"],
-    include: [
+    attributes: ["rutUsuario", "nombreUsuario", "correoUsuario", "direccionUsuario" ],
+    include: [     
     {
-      model: publicacion
-      
+      model: publicacion,
+      attributes: [],
+      include: {
+        model: gestion,
+        
+        attributes: [],
+        where : {
+          idAdmin: idAdminFromRequest
+        },
+      },
+      required: true,
     }
   ]
   });
-
-console.log(usuarios)
-
-// Muestra los usuarios gestionados por un administrador
-
-/**
-  export const getUsuariosGestionados = async (idAdmin: string): Promise<UsuarioInterface []> => {
-  const usuarios = await publicacion.findAll({ include: [
-    {
-      model: gestion,
-      where: {
-        idAdmin: idAdmin
-      }
-    },
-    {
-      model: usuario,
-      through: {
-        where: {
-          rutUsuario: usuario.rutUsuario,
-          completed: true
-        }
-      }
-    }
-  ]
-  });
-
-  console.log(usuarios)
-  
- */
-  /*
-  gestiones.forEach(async (element: GestionInterface) => {
-    const usuarios = await publicacion.findAll({
-      where: {
-        idPublicacion: element.idPublicacion
-      }
-    });
-    console.log(usuarios)
-  });
-
-  */
-
-  //const idPublicacion = gestiones[0].idPublicacion
-
-  /**
-   const usuarios = await publicacion.findAll({ where: {
-    idPublicacion: idPublicacion
-  }});
-   */
-
-  //console.log(usuarios)
 
   return usuarios;
 }
-  
+
+export const updateContrasenaUsuario = async (object: any) => {
+  const usuarioUpdate = await usuario.findOne({
+    where: {
+      rutUsuario: v.parseRutUsuario(object.rutUsuario)
+    }
+  })
+
+  const usuarioUpdated = await usuarioUpdate.update({
+    contrasenaUsuario: v.parseContrasenaUsuario(object.contrasenaUsuario)
+  })
+
+  return usuarioUpdated
+}
+
+export const updateDireccionUsuario = async (object: any) => {
+  const usuarioUpdate = await usuario.findOne({
+    where: {
+      rutUsuario: v.parseRutUsuario(object.rutUsuario)
+    }
+  })
+
+  const usuarioUpdated = await usuarioUpdate.update({
+    contrasenaUsuario: v.parseDireccionUsuario(object.direccionUsuario)
+  })
+
+  return usuarioUpdated
+}
+
 export const postUsuario = (object: any):  UsuarioInterface  => {
   const newEntry:  UsuarioInterface  = {
   rutUsuario: v.parseRutUsuario(object.rutUsuario),
@@ -114,4 +88,15 @@ export const postUsuario = (object: any):  UsuarioInterface  => {
   }
   
   return newEntry
+}
+
+export const deleteUsuario = async (object: any) => {
+  const usuarioDelete = await usuario.findOne({
+    where: {
+      rutUsuario: v.parseRutUsuario(object.rutUsuario)
+    }
+  })
+
+  const usuarioDeleted = await usuarioDelete.destroy();
+  return usuarioDeleted;
 }

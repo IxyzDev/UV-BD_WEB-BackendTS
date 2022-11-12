@@ -32,6 +32,6 @@ app.use("/publicacion", publicacionRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/producto", productoRouter);
 app.use("/admin", administradorRouter)
-app.use("/market", mercadoRouter);
+app.use("/mercado", mercadoRouter);
 app.use("/seccion", seccionRouter);
 app.use("/gestion", gestionRouter)

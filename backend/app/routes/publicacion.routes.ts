@@ -53,4 +53,15 @@ router.post('/crear', async (req: Request, res: Response) => {
   }
 })
 
+router.delete('/eliminar', async (req: Request, res: Response) => {
+  try {
+    const record = publicacionController.deletePublicacion({ ...req.body })
+
+    return res.json({ record, recordRecordmsg: 'Publicacion eliminado correctamente' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al eliminar al Publicacion' })
+  }
+})
+
 export default router

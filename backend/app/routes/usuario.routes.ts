@@ -50,4 +50,37 @@ router.post('/crear', async (req: Request, res: Response) => {
   }
 })
 
+router.put('/actualizar/contrasena', async (req: Request, res: Response) => {
+  try {
+    const record = usuarioController.updateContrasenaUsuario({ ...req.body })
+
+    return res.json({ record, recordRecordmsg: 'Contraseña del usuario actualizada correctamente' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al actualizar al nuevo usuario' })
+  }
+})
+
+router.put('/actualizar/direccion', async (req: Request, res: Response) => {
+  try {
+    const record = usuarioController.updateDireccionUsuario({ ...req.body })
+
+    return res.json({ record, recordRecordmsg: 'Direccion del usuario actualizada correctamente' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al actualizar al usuario' })
+  }
+})
+
+router.delete('/eliminar', async (req: Request, res: Response) => {
+  try {
+    const record = usuarioController.deleteUsuario({ ...req.body })
+
+    return res.json({ record, recordRecordmsg: 'Usuario eliminado correctamente' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ msg: 'Error al eliminar al usuario' })
+  }
+})
+
 export default router

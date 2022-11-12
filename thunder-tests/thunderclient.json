@@ -6,9 +6,9 @@
     "name": "Correo usuario por rut",
     "url": "localhost:3000/usuario/mostrar/correo/20.479.055-8",
     "method": "GET",
-    "sortNum": 10000,
+    "sortNum": 15000,
     "created": "2022-11-08T19:15:17.823Z",
-    "modified": "2022-11-12T06:16:11.325Z",
+    "modified": "2022-11-12T08:52:00.342Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -32,32 +32,18 @@
     "colId": "7d6a50df-ee64-49fa-99fc-c886f06ad5d0",
     "containerId": "",
     "name": "Crear publicacion",
-    "url": "localhost:3000/publicacion/create",
+    "url": "localhost:3000/publicacion/crear",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-12T05:25:22.645Z",
-    "modified": "2022-11-12T05:25:22.645Z",
+    "modified": "2022-11-12T09:10:55.614Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n        \"fotoPublicacion\": \"https://via.placeholder.com/150/f684ab\",\n        \"precioPublicacion\": 500,\n        \"estadoPublicacion\": \"Bueno\",\n        \"tituloPublicacion\": \"Algo\",\n        \"descripcionPublicacion\": \"La encontre en un mal estado para su venta\",\n        \"rutUsuario\": \"21.479.053-4\",\n        \"idProducto\": \"3a2e7cc2-6df2-44a9-afb1-df19b4920989\"\n    }",
+      "raw": "{\n        \"fotoPublicacion\": \"https://via.placeholder.com/150/f684ab\",\n        \"precioPublicacion\": 5300,\n        \"estadoPublicacion\": \"Malo\",\n        \"tituloPublicacion\": \"Algopoco\",\n        \"descripcionPublicacion\": \"La encontre en un mal estado para su venta\",\n        \"rutUsuario\": \"21.439.053-4\",\n        \"idProducto\": \"96533020-57ee-4140-841d-4f47f55d1f9d\"\n    }",
       "form": []
     },
-    "tests": []
-  },
-  {
-    "_id": "c8f3371d-566b-4658-91b7-1f1f974d5f2c",
-    "colId": "7d6a50df-ee64-49fa-99fc-c886f06ad5d0",
-    "containerId": "",
-    "name": "Mostrar publicacion estado",
-    "url": "localhost:3000/publicacion/mostrar/maloa",
-    "method": "GET",
-    "sortNum": 30000,
-    "created": "2022-11-12T05:25:32.004Z",
-    "modified": "2022-11-12T05:25:32.004Z",
-    "headers": [],
-    "params": [],
     "tests": []
   },
   {
@@ -72,25 +58,6 @@
     "modified": "2022-11-12T05:26:42.202Z",
     "headers": [],
     "params": [],
-    "tests": []
-  },
-  {
-    "_id": "4a353678-70d4-43d2-9bb9-19ce120734b8",
-    "colId": "14b5be49-ff6c-4d82-b17c-7e29907db52a",
-    "containerId": "",
-    "name": "Crear un administrador",
-    "url": "localhost:3000/admin/crear",
-    "method": "POST",
-    "sortNum": 20000,
-    "created": "2022-11-12T05:29:05.605Z",
-    "modified": "2022-11-12T05:29:05.605Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\r\n        \"adminName\": \"Alejandro\",\r\n        \"adminPassword\": \"7827\"\r\n    }",
-      "form": []
-    },
     "tests": []
   },
   {
@@ -116,12 +83,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2022-11-12T08:22:26.181Z",
-    "modified": "2022-11-12T08:22:26.181Z",
+    "modified": "2022-11-12T09:11:50.866Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n        \"nombreAdmin\": \"Alejandro\",\r\n        \"contrasenaAdmin\": \"7827\"\r\n    }",
+      "raw": "{\n        \"nombreAdmin\": \"Esequiel\",\n        \"contrasenaAdmin\": \"7827\"\n    }",
       "form": []
     },
     "tests": []
@@ -145,11 +112,11 @@
     "colId": "7d6a50df-ee64-49fa-99fc-c886f06ad5d0",
     "containerId": "",
     "name": "Mostrar publicacion estado",
-    "url": "localhost:3000/publicacion/mostrar/maloa",
+    "url": "localhost:3000/publicacion/mostrar/malo",
     "method": "GET",
     "sortNum": 40000,
     "created": "2022-11-12T08:22:55.579Z",
-    "modified": "2022-11-12T08:22:55.579Z",
+    "modified": "2022-11-12T19:29:48.802Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -178,11 +145,11 @@
     "colId": "de25e79d-2519-4dc2-a72f-ce813ec854d4",
     "containerId": "",
     "name": "Mostrar productos",
-    "url": "localhost:3000/producto/read",
+    "url": "localhost:3000/producto/mostrar",
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-11-12T08:23:11.379Z",
-    "modified": "2022-11-12T08:23:11.379Z",
+    "modified": "2022-11-12T08:29:33.688Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -196,12 +163,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2022-11-12T08:23:17.694Z",
-    "modified": "2022-11-12T08:23:17.694Z",
+    "modified": "2022-11-12T14:56:41.990Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"rutUsuario\": \"20.343.123-2\",\n  \"nombreUsuario\": \"Alejandro\",\n  \"correoUsuario\": \"ixyz0202@gmail.com\",\n  \"contrasenaUsuario\": \"NOMASDROGA\",\n  \"direccionUsuario\": \"ya pero 7 por 8????\"\n}",
+      "raw": "{\n  \"rutUsuario\": \"22.222.222-1\",\n  \"nombreUsuario\": \"Alejandro\",\n  \"correoUsuario\": \"ixyz0202@gmail.com\",\n  \"contrasenaUsuario\": \"NOMASDROGA\",\n  \"direccionUsuario\": \"ya pero 7 por 8????\"\n}",
       "form": []
     },
     "tests": []
@@ -210,12 +177,12 @@
     "_id": "e7dca37b-f6d0-4df4-9409-fa790e56d1a3",
     "colId": "01c51165-8c6d-4259-a2e6-fd9e209b29f8",
     "containerId": "",
-    "name": "Correo usuario por rut",
-    "url": "localhost:3000/usuario/mostrar/20.479.055-8",
+    "name": "Mostrar usuarios gestionados por un administrador",
+    "url": "localhost:3000/usuario/mostrar/admin/266b3d7b-aedf-4e7f-9009-bb41e4904960",
     "method": "GET",
     "sortNum": 40000,
     "created": "2022-11-12T08:23:26.258Z",
-    "modified": "2022-11-12T08:23:26.258Z",
+    "modified": "2022-11-12T14:18:02.614Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -244,16 +211,16 @@
     "colId": "9c598a2a-8ee0-468a-b430-70131ef72985",
     "containerId": "",
     "name": "Crear un mercado",
-    "url": "localhost:3000/market/read",
-    "method": "GET",
+    "url": "localhost:3000/mercado/crear",
+    "method": "POST",
     "sortNum": 10000,
     "created": "2022-11-12T08:23:42.858Z",
-    "modified": "2022-11-12T08:23:42.858Z",
+    "modified": "2022-11-12T19:57:02.243Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"nameMarket\": \"Lider\",\n  \"addressMarket\": \"En una direccion personal y particular\"\n}",
+      "raw": "{\n  \"nombreMercado\": \"Tottus\",\n  \"direccionMercado\": \"y a mi que\"\n}",
       "form": []
     },
     "tests": []
@@ -267,14 +234,118 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-12T08:23:46.942Z",
-    "modified": "2022-11-12T08:23:46.942Z",
+    "modified": "2022-11-12T09:13:54.290Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"tituloGestion\": \"Sot un titulazoa\",\n    \"descripcionGestion\": \"Eliminado porque me caia mal\",\n    \"idPublicacion\": \"538339b1-01ed-4007-872e-64476d35ca3b\",\n    \"idAdmin\": \"7fcf0281-341a-4c30-9488-95b3837e47f6\"\n}",
+      "raw": "{\n    \"tituloGestion\": \"Taba mal escroto\",\n    \"descripcionGestion\": \"Usted sabe mi rey lo que yo le voy a aplicar a su publicacion\",\n    \"idPublicacion\": \"d7d3d672-ec71-4363-9a16-ff2215574012\",\n    \"idAdmin\": \"e36ccf31-2af5-47c2-b73f-db796dd2c404\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "396439da-8931-4827-8b7c-ca65948e3a7a",
+    "colId": "de25e79d-2519-4dc2-a72f-ce813ec854d4",
+    "containerId": "",
+    "name": "Crear productos",
+    "url": "localhost:3000/producto/crear",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-12T08:27:21.095Z",
+    "modified": "2022-11-12T08:29:26.148Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n    \"nombreProducto\": \"Detergente\",\r\n    \"marcaProducto\": \"Clorinda\",\r\n    \"tipoProducto\": \"Limpieza\"\r\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "291b6c4a-c41c-4db3-a21a-618bf326bc7e",
+    "colId": "01c51165-8c6d-4259-a2e6-fd9e209b29f8",
+    "containerId": "",
+    "name": "Actualizar contraseña usuario",
+    "url": "localhost:3000/usuario/actualizar/contrasena",
+    "method": "PUT",
+    "sortNum": 50000,
+    "created": "2022-11-12T16:33:28.313Z",
+    "modified": "2022-11-12T18:55:47.801Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"rutUsuario\": \"20.479.055-8\",\n  \"contrasenaUsuario\": \"No me la contesssss\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c96e4e19-1c42-4f5f-b578-1206020b673e",
+    "colId": "01c51165-8c6d-4259-a2e6-fd9e209b29f8",
+    "containerId": "",
+    "name": "Eliminar usuario",
+    "url": "localhost:3000/usuario/eliminar",
+    "method": "DELETE",
+    "sortNum": 60000,
+    "created": "2022-11-12T19:21:03.389Z",
+    "modified": "2022-11-12T19:21:40.123Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"rutUsuario\": \"20.479.055-8\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "084ce436-1ffd-4126-9f92-bccc4bf1be63",
+    "colId": "7d6a50df-ee64-49fa-99fc-c886f06ad5d0",
+    "containerId": "",
+    "name": "Eliminar publicacion",
+    "url": "localhost:3000/publicacion/eliminar",
+    "method": "DELETE",
+    "sortNum": 60000,
+    "created": "2022-11-12T19:29:25.409Z",
+    "modified": "2022-11-12T19:31:54.265Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"idPublicacion\": \"802892af-d7f6-42a9-90a4-210e14bca6cc\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "6b6c2705-f36a-4b64-8d9c-98b6c9e8b312",
+    "colId": "de25e79d-2519-4dc2-a72f-ce813ec854d4",
+    "containerId": "",
+    "name": "Productos por mercado",
+    "url": "localhost:3000/producto/mostrar/mercado",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-11-12T19:52:08.316Z",
+    "modified": "2022-11-12T19:52:21.603Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "61a1508d-5c92-44bf-9db2-828d5daef801",
+    "colId": "9c598a2a-8ee0-468a-b430-70131ef72985",
+    "containerId": "",
+    "name": "Mostrar mercados",
+    "url": "localhost:3000/mercado/mostrar",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-11-12T19:57:09.999Z",
+    "modified": "2022-11-12T19:57:20.508Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
