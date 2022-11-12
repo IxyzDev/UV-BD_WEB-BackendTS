@@ -1,62 +1,23 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import "./styles.css";
+import { Routes, Route } from "react-router-dom"
+import { Container } from "react-bootstrap"
+import { Home } from "./pages/Home" 
+import { ShowPublications } from "./pages/Show_Publications"
+import { CreatePublications } from "./pages/Create_Publication";
+import { Navbar } from "./components/Navbar"
 
-type resultProps = {
-  rutUsuario: string
-  nombreUsuario: string
-  correoUsuario: string
-  contrasenaUsuario: string
-  direccionUsuario: string
-};
-
-export default function App() {
-  const [result, setResult] = useState<resultProps[]>([]);
-
-  const api = async () => { axios({
-     
-        method: 'get',
-        url: 'http://localhost:3000/usuario/read',
-      })
-      .then(function (response:any) {
-        setResult(response?.data)
-      }).catch((err)=>{
-        console.log(err)
-      })
-
-      
-      // const apiResponse = await fetch("http://localhost:3000/usuario/read",{
-      //     method: 'GET',
-      //     headers: { 'Content-type': 'application/json'},
-      // });
-      // console.log(apiResponse)
-      // const json = await apiResponse.json();
-    // const jsonData = await data.json();
-    // setResult(jsonData.results);
-  };
-
-  useEffect(() => {
-    console.log("JASHDKAJHS")
-    api();
-  }, []);
-/*  rutUsuario: string
-  nombreUsuario: string
-  correoUsuario: string
-  contrasenaUsuario: string
-  direccionUsuario: string */
+function App() {
   return (
-    <div className="App">
-      <h1>
-        {result?.map((value: resultProps) => {
-          return (
-            <div>
-              <div>{value.rutUsuario}</div>
-              <div>{value.nombreUsuario}</div>
-            </div>
-          );
-        })}
-      </h1>
-      <h2>Json File from DB_Backend.</h2>
+    <div>
+      <Navbar />
+      <Container className="mb-8">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Show_Publications" element={<ShowPublications />} />
+          <Route path="/Create_Publications" element={<CreatePublications />} />
+        </Routes>
+      </Container>
     </div>
-  );
+  )
 }
+
+export default App

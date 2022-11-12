@@ -5,14 +5,16 @@ import * as v from "./verificacionPublicacion"
 
 const publicacion = db.Publicacion
 
+/*
 export const getPublicaciones = async (): Promise<PublicacionInterface[]> => {
   const publicaciones = await publicacion.findAll({ where: {} })
   return publicaciones
 }
+*/
 
 // Consulta que retorna la informacion perteneciente a una publicacion respetando la privacidad del rut del usuario
-export const getPublicacionWithoutRutUsuario = async (estadoPublicacion: string) => {
-  const usuariObtenido: PublicacionInterface[] = await publicacion.findAll({ where: { estadoPublicacion } })
+export const getPublicacionWithoutRutUsuario = async () => {
+  const usuariObtenido: PublicacionInterface[] = await publicacion.findAll({ where: { } })
 
   const publicacionWithoutRutUsuario: PublicacionWithoutRutUsuario[] =
     usuariObtenido.map(({ idPublicacion, idProducto, fotoPublicacion, precioPublicacion, estadoPublicacion, tituloPublicacion, descripcionPublicacion }) => {
