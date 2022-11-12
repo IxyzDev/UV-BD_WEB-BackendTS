@@ -1,7 +1,8 @@
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import axios from "axios"
 import { useEffect } from "react";
-import { resultProps } from "../interfaces/Show_Publications"
+import  Formulario  from "../components/Form"
+import { resultProps } from "../interfaces/Publications"
 
 export function CreatePublications() {
   const api = async () => {
@@ -18,19 +19,22 @@ export function CreatePublications() {
         descripcionPublicacion: "hola"
       }
         })
-      .then(function (response) {
+      .then(function (response:any) {
         console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });  
-  };
+      }).catch((err)=>{
+        console.log(err)
+      }) 
+  }
   useEffect(() => {
-    console.log("B")
+    console.log("A")
     api();
-}, []);
+  }, []);
   return (
-    <Card.Text>hola</Card.Text>
+    <Button onClick={CreatePublications}>
+      <Card.Text>
+        <Formulario/>
+      </Card.Text>
+    </Button>
   )
 };
   

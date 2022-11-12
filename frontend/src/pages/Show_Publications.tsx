@@ -1,7 +1,7 @@
 //import Fetching from "../data/axios"
 import { Button, Card, Image } from "react-bootstrap"
 import axios from "axios"
-import { resultProps } from "../interfaces/Show_Publications";
+import { resultProps } from "../interfaces/Publications";
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
