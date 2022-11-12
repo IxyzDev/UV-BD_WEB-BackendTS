@@ -7,7 +7,7 @@ export const parseContrasenaAdmin = (ContrasenaAdminFromRequest: any): string =>
 
 export const parseNombreAdmin = (NombreAdminFromRequest: any): string => {
   if (!isString(NombreAdminFromRequest)) {
-    throw new Error('Error al verificar la contraseña del administrador')
+    throw new Error('Error al verificar el nombre del administrador')
   }
   return NombreAdminFromRequest
 }

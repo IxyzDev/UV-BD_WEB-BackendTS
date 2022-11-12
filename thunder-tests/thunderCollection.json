@@ -5,5 +5,19 @@
     "created": "2022-11-08T19:15:17.820Z",
     "sortNum": 10000,
     "folders": []
+  },
+  {
+    "_id": "7d6a50df-ee64-49fa-99fc-c886f06ad5d0",
+    "colName": "Publicacion",
+    "created": "2022-11-12T05:25:12.138Z",
+    "sortNum": 20000,
+    "folders": []
+  },
+  {
+    "_id": "14b5be49-ff6c-4d82-b17c-7e29907db52a",
+    "colName": "Admin",
+    "created": "2022-11-12T05:26:42.112Z",
+    "sortNum": 30000,
+    "folders": []
   }
 ]

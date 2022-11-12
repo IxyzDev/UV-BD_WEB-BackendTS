@@ -4,7 +4,7 @@ import db from '../models'
 
 const router = express.Router()
 
-router.get('/read', async (_req: Request, res: Response) => {
+router.get('/mostrar', async (_req: Request, res: Response) => {
   try {
     const productos = await productoController.getProductos()
     return res.json(productos)
@@ -14,7 +14,7 @@ router.get('/read', async (_req: Request, res: Response) => {
   }
 })
 
-router.post('/create', async (req: Request, res: Response) => {
+router.post('/crear', async (req: Request, res: Response) => {
   try {
     const newProductosEntry = productoController.postProducto({ ...req.body })
 

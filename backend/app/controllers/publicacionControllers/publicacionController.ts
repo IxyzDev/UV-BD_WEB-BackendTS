@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import * as v from "./verificacionPublicacion"
 
 const publicacion = db.Publicacion
+//import { Op } from "sequelize"
 
 /*
 export const getPublicaciones = async (): Promise<PublicacionInterface[]> => {
@@ -13,11 +14,27 @@ export const getPublicaciones = async (): Promise<PublicacionInterface[]> => {
 */
 
 // Consulta que retorna la informacion perteneciente a una publicacion respetando la privacidad del rut del usuario
-export const getPublicacionWithoutRutUsuario = async () => {
-  const usuariObtenido: PublicacionInterface[] = await publicacion.findAll({ where: { } })
+export const getPublicacionWithoutRutUsuario = async (): Promise<PublicacionWithoutRutUsuario[]> => {
+  const publicaciones: PublicacionInterface[] = await publicacion.findAll({ where: { } })
+  return parseWithoutRutUsuario(publicaciones)
+}
 
+// Retorna todas las publicaciones dadas las categorias entregadas
+export const getPublicacionByEstado = async (estado: string): Promise<PublicacionWithoutRutUsuario[]> => {
+  const publicaciones: PublicacionInterface[] = await publicacion.findAll({
+    where: {
+      estadoPublicacion: estado
+    }
+  })
+  if (publicaciones.length == 0) {
+    throw new Error('No se encontraron publicaciones cn ese estado')
+  }
+  return parseWithoutRutUsuario(publicaciones)
+}
+
+export const parseWithoutRutUsuario = (publicaciones: PublicacionInterface[]): PublicacionWithoutRutUsuario[] => {
   const publicacionWithoutRutUsuario: PublicacionWithoutRutUsuario[] =
-    usuariObtenido.map(({ idPublicacion, idProducto, fotoPublicacion, precioPublicacion, estadoPublicacion, tituloPublicacion, descripcionPublicacion }) => {
+    publicaciones.map(({ idPublicacion, idProducto, fotoPublicacion, precioPublicacion, estadoPublicacion, tituloPublicacion, descripcionPublicacion }) => {
       return {
         idPublicacion,
         idProducto,
@@ -29,7 +46,9 @@ export const getPublicacionWithoutRutUsuario = async () => {
       }
     })
   return publicacionWithoutRutUsuario
-} 
+}
+
+
 
 export const postPublicacion = (object: any): PublicacionInterface  => {
   const newEntry: PublicacionInterface = {

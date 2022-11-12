@@ -1,9 +1,9 @@
 import { Model } from 'sequelize'
-import { UserInterface } from '../interfaces/types'
+import { UsuarioInterface  } from '../interfaces/types'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-class Usuario extends Model<UserInterface>
-  implements UserInterface {
+class Usuario extends Model<UsuarioInterface >
+  implements UsuarioInterface  {
   rutUsuario!: string
   nombreUsuario!: string
   correoUsuario!: string
@@ -12,7 +12,7 @@ class Usuario extends Model<UserInterface>
 
   static associate (models: any) {
     Usuario.hasMany(models.Publicacion, {
-      foreignKey: 'userRut',
+      foreignKey: 'rutUsuario',
       foreignKeyConstraint: true
     })
   }

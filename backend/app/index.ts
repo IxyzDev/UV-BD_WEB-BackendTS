@@ -31,7 +31,7 @@ app.get("/", (_req, res) => {
 app.use("/publicacion", publicacionRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/producto", productoRouter);
-app.use("/administrador", administradorRouter)
+app.use("/admin", administradorRouter)
 app.use("/market", mercadoRouter);
 app.use("/seccion", seccionRouter);
 app.use("/gestion", gestionRouter)

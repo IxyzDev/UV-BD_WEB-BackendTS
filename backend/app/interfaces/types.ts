@@ -40,7 +40,7 @@ export enum EstadosPublicacion {
   Buena = 'Bueno',
 }
 
-export interface UserInterface {
+export interface UsuarioInterface {
   rutUsuario: string
   nombreUsuario: string
   correoUsuario: string
@@ -48,8 +48,9 @@ export interface UserInterface {
   direccionUsuario: string
 }
 
-export type CorreoUsuario = Pick<UserInterface, 'correoUsuario' >
+export type CorreoUsuario = Pick<UsuarioInterface , 'correoUsuario' >
 
+//interface Male extends Person
 
 //export type SeccionInterface = Omit<SeccionXProductoXMercadoInterface, 'idProducto' | 'idMercado'>
 export interface ProductInterface {

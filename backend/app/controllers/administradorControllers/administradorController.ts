@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 const administrador = db.Administrador
 
-export const getAdministradores = async (): Promise< AdminInterface[]> => {
-  const administradors = await administrador.findAll({ where: {} })
-  return administradors
+export const getAdministradores = async (): Promise <AdminInterface[]> => {
+  const administradores = await administrador.findAll({ where: {} })
+  return administradores
 }
   
 export const postAdministrador = (object: any):  AdminInterface => {
