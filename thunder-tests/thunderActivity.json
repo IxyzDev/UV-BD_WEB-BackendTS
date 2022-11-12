@@ -94,16 +94,16 @@
     "colId": "history",
     "containerId": "",
     "name": "Crear usuario",
-    "url": "localhost:3000/usuario/read/21.479.053-4",
-    "method": "GET",
+    "url": "localhost:3000/usuario/create",
+    "method": "POST",
     "sortNum": 0,
     "created": "2022-11-07T22:50:06.053Z",
-    "modified": "2022-11-08T18:32:53.750Z",
+    "modified": "2022-11-08T19:46:44.628Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"rutUsuario\": \"21.479.053-4\",\n  \"nombreUsuario\": \"Agustin\",\n  \"correoUsuario\": \"holasalinasdeajte@alumnos.uv.cl\",\n  \"contrasenaUsuario\": \"kevin7827\",\n  \"direccionUsuario\": \"En mi casa\"\n}",
+      "raw": "{\n  \"rutUsuario\": \"21.439.053-4\",\n  \"nombreUsuario\": \"Agustinaaaaaaa\",\n  \"correoUsuario\": \"holasalinasdeajte@alumnos.uv.cl\",\n  \"contrasenaUsuario\": \"kevin72222827\",\n  \"direccionUsuario\": \"En mi caserea\"\n}",
       "form": []
     },
     "tests": []

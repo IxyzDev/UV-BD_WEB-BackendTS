@@ -73,15 +73,6 @@ export const isIdProducto = async (param: any): Promise<boolean> => {
   return IdProducto
 }
 
-//const project = await ProjefindByPk(param);
-//if (project === null) {
-  //console.log('Not found!');
-//} else {
-  //console.log(project instanceof Project); // true
-  // Its primary key is 123
-//}
-
-
 export const isState = (param: any): boolean => {
   return Object.values(EstadosPublicacion).includes(param)
 }

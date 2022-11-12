@@ -13,8 +13,8 @@ type resultProps = {
 export default function App() {
   const [result, setResult] = useState<resultProps[]>([]);
 
-  const api = async () => {
-      axios({
+  const api = async () => { axios({
+     
         method: 'get',
         url: 'http://localhost:3000/usuario/read',
       })
