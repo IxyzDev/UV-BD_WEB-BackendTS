@@ -94,16 +94,16 @@
     "colId": "history",
     "containerId": "",
     "name": "Crear usuario",
-    "url": "localhost:3000/usuario/create",
+    "url": "localhost:3000/usuario/crear",
     "method": "POST",
     "sortNum": 0,
     "created": "2022-11-07T22:50:06.053Z",
-    "modified": "2022-11-11T00:05:56.875Z",
+    "modified": "2022-11-12T08:21:35.479Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"rutUsuario\": \"21.439.053-4\",\n  \"nombreUsuario\": \"Agustinaaaaaaa\",\n  \"correoUsuario\": \"holasalinasdeajte@alumnos.uv.cl\",\n  \"contrasenaUsuario\": \"kevin72222827\",\n  \"direccionUsuario\": \"En mi caserea\"\n}",
+      "raw": "{\n  \"rutUsuario\": \"20.343.123-2\",\n  \"nombreUsuario\": \"Alejandro\",\n  \"correoUsuario\": \"ixyz0202@gmail.com\",\n  \"contrasenaUsuario\": \"NOMASDROGA\",\n  \"direccionUsuario\": \"ya pero 7 por 8????\"\n}",
       "form": []
     },
     "tests": []
@@ -117,7 +117,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-11-07T22:54:47.724Z",
-    "modified": "2022-11-12T00:36:00.164Z",
+    "modified": "2022-11-11T14:05:04.463Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -164,7 +164,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-11-08T14:26:25.662Z",
-    "modified": "2022-11-12T08:09:32.900Z",
+    "modified": "2022-11-12T08:17:42.647Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -242,6 +242,20 @@
       "raw": "{\r\n        \"nombreAdmin\": \"Alejandro\",\r\n        \"contrasenaAdmin\": \"7827\"\r\n    }",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "56fb125a-c3e6-42b7-a477-caca494183fe",
+    "colId": "history",
+    "containerId": "",
+    "name": "Mostrar usuarios",
+    "url": "localhost:3000/usuario/mostrar",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-12T08:21:56.675Z",
+    "modified": "2022-11-12T08:21:56.684Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

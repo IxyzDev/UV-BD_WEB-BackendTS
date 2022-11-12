@@ -19,5 +19,33 @@
     "created": "2022-11-12T05:26:42.112Z",
     "sortNum": 30000,
     "folders": []
+  },
+  {
+    "_id": "cdd510a4-4079-41fa-9f34-9b0958a6731e",
+    "colName": "Gestiones",
+    "created": "2022-11-12T08:22:45.784Z",
+    "sortNum": 40000,
+    "folders": []
+  },
+  {
+    "_id": "de25e79d-2519-4dc2-a72f-ce813ec854d4",
+    "colName": "Productos",
+    "created": "2022-11-12T08:23:11.279Z",
+    "sortNum": 50000,
+    "folders": []
+  },
+  {
+    "_id": "31e857a4-9de1-4e2e-9803-b9b02228ec22",
+    "colName": "Seccion",
+    "created": "2022-11-12T08:23:33.641Z",
+    "sortNum": 60000,
+    "folders": []
+  },
+  {
+    "_id": "9c598a2a-8ee0-468a-b430-70131ef72985",
+    "colName": "Mercados",
+    "created": "2022-11-12T08:23:42.759Z",
+    "sortNum": 70000,
+    "folders": []
   }
 ]
