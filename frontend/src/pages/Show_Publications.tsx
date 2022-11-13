@@ -11,7 +11,7 @@ export function ShowPublications() {
   const api = async () => {
       axios({
         method: 'get',
-        url: 'http://localhost:3000/publicacion/read',
+        url: 'http://localhost:3000/publicacion/mostrar',
       })
       .then(function (response:any) {
         setResult(response?.data)

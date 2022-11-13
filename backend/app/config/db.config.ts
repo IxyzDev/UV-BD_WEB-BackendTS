@@ -2,8 +2,8 @@ module.exports = {
     development: {
         username: 'root',
         //password: 'Informatica2022.-',
-        //password: 'C79J85B5_',
-        password: '7827',
+        password: 'C79J85B5_',
+        //password: '7827',
         database: 'odp',
         host: 'localhost',
         dialect: 'mysql'
