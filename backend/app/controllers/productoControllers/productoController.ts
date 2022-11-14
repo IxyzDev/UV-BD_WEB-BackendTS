@@ -2,6 +2,7 @@ import db from '../../models'
 import { ProductInterface } from '../../interfaces/types'
 import { v4 as uuidv4 } from 'uuid'
 import * as v from "./verificacionProducto"
+//import { Op } from 'sequelize'
 
 const producto = db.Producto
 
@@ -43,19 +44,16 @@ export const getAllProductosByMercado = async (object: any) => {
 }
 
 export const getAllProductosByNotSeccion = async () => {
-  const productoByNoSeccion: ProductInterface[] = await seccion.findAll({
-    include: [
-      {
-        model: producto,
-        attributes: [],
-        where: {
-          
-        }
-      }
-    ],
-    order: ["tipoProducto"]
+  const productoByNoSeccion: ProductInterface[] = await producto.findAll({
+    producto
+
+    
+    
+    //order: ["tipoProducto"]
 
   })
+
+  console.log(productoByNoSeccion)
 
   return productoByNoSeccion
 }
