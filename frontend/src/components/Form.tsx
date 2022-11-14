@@ -21,6 +21,12 @@ export default class AddTutorial extends Component<Props, State> {
       this.onChangeDescription = this.onChangeDescription.bind(this);
       this.saveTutorial = this.saveTutorial.bind(this);
       this.newTutorial = this.newTutorial.bind(this);
+      this.onChangeFoto = this.onChangeFoto.bind(this);
+      this.onChangePrecio = this.onChangePrecio.bind(this);
+      this.onChangeEstado = this.onChangeEstado.bind(this);
+      this.onChangeIdProducto = this.onChangeIdProducto.bind(this);
+      this.onChangeRut = this.onChangeRut.bind(this);
+
   
 /*  idPublicacion: string
   rutUsuario: 21.479.053-4
@@ -84,24 +90,14 @@ export default class AddTutorial extends Component<Props, State> {
     }
 
     onChangePrecio(e: ChangeEvent<HTMLInputElement>) {
+        console.log(e.target.value, e.target.valueAsNumber)
         this.setState({
           precioPublicacion: e.target.valueAsNumber
         });
     }
 
-  
-    saveTutorial() {
-      const data:any | resultProps = {
-        tituloPublicacion: this.state.tituloPublicacion,
-        descripcionPublicacion: this.state.descripcionPublicacion,
-        fotoPublicacion: this.state.fotoPublicacion,
-        precioPublicacion: this.state.precioPublicacion,
-        estadoPublicacion: this.state.estadoPublicacion,
-        rutUsuario: this.state.rutUsuario,
-        idProducto: this.state.idProducto
-      };
   /*
-    {
+      {
         "fotoPublicacion": "https://via.placeholder.com/150/f684ab",
         "precioPublicacion": 500,
         "estadoPublicacion": "Bueno",
@@ -111,8 +107,20 @@ export default class AddTutorial extends Component<Props, State> {
         "idProducto": "78dd99bb-8433-46fd-9dff-20fb79f892f0"
     }
   */
+    saveTutorial(e: React.FormEvent<HTMLFormElement>) { 
+      e.preventDefault()
+      const data:any | resultProps = {
+        tituloPublicacion: this.state.tituloPublicacion,
+        descripcionPublicacion: this.state.descripcionPublicacion,
+        fotoPublicacion: this.state.fotoPublicacion,
+        precioPublicacion: this.state.precioPublicacion,
+        estadoPublicacion: this.state.estadoPublicacion,
+        rutUsuario: this.state.rutUsuario,
+        idProducto: this.state.idProducto
+      };
+      console.log(data)
       TutorialDataService.create(data)
-        .then((response: any) => {
+        /*.then((response: any) => {
           this.setState({
             idPublicacion: response.data.idPublicacion,
             tituloPublicacion: response.data.titulo,
@@ -125,11 +133,12 @@ export default class AddTutorial extends Component<Props, State> {
             published: response.data.published,
             submitted: true
           });
-          console.log(response.data);
+          
+          //console.log(response.data);
         })
         .catch((e: Error) => {
           console.log(e);
-        });
+        });*/
     }
   
     newTutorial() {
@@ -145,24 +154,23 @@ export default class AddTutorial extends Component<Props, State> {
         const {idProducto, rutUsuario, submitted, tituloPublicacion, descripcionPublicacion, estadoPublicacion, precioPublicacion, fotoPublicacion } = this.state;
 
     return (
-    <Form validated={submitted}>
         <Container>
-            <Form>
+            <Form validated={submitted} onSubmit={this.saveTutorial} >
             <Form.Group className="mb-3">
-              <Form.Label required value={rutUsuario} onChange={this.onChangeRut}>User DNI</Form.Label>
-              <Form.Control placeholder="Rut" />
+              <Form.Label >User DNI</Form.Label>
+              <Form.Control required value={rutUsuario} onChange={this.onChangeRut} placeholder="Rut" />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label required value={idProducto} onChange={this.onChangeIdProducto}>Product ID</Form.Label>
-              <Form.Control placeholder="id Producto" />
+              <Form.Label >Product ID</Form.Label>
+              <Form.Control required value={idProducto} onChange={this.onChangeIdProducto} placeholder="id Producto" />
             </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label required value={tituloPublicacion} onChange={this.onChangeTitle}>Titulo</Form.Label>
-                    <Form.Control type="title" placeholder="Titulo Publicacion" />
+                    <Form.Label >Titulo</Form.Label>
+                    <Form.Control required value={tituloPublicacion} onChange={this.onChangeTitle} type="title" placeholder="Titulo Publicacion" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label required value={fotoPublicacion} onChange={this.onChangeFoto}>Link Foto</Form.Label>
-                    <Form.Control type="Link" placeholder="https://..." />
+                    <Form.Label >Link Foto</Form.Label>
+                    <Form.Control required value={fotoPublicacion} onChange={this.onChangeFoto} placeholder="https://..." />
                 </Form.Group>
                 <Form.Label>Estado Producto</Form.Label>
                 <Form.Select required value={estadoPublicacion} onChange={this.onChangeEstado} className="mb-3" aria-label="Default select example">
@@ -172,19 +180,17 @@ export default class AddTutorial extends Component<Props, State> {
                 </Form.Select>
                 <Form.Label>Precio Producto</Form.Label>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label required value={precioPublicacion} onChange={this.onChangePrecio}></Form.Label>
-                        <Form.Control type="Precio" placeholder="Valor Producto" />
+                        <Form.Control required value={precioPublicacion} onChange={this.onChangePrecio} type="number" placeholder="Valor Producto" />
                     </Form.Group>
                 <Form.Group className="mb-3" controlId="descripccion">
                     <Form.Label>Descripccion</Form.Label>
                     <Form.Control as="textarea" type="text" placeholder="Descripccion" aria-required value={descripcionPublicacion} onChange={this.onChangeDescription}/>
                 </Form.Group>
-                <Button onClick={this.saveTutorial} className="btn btn-success" type="submit">
+                <Button className="btn btn-success" type="submit">
                     Submit
                 </Button>
             </Form>
         </Container>
-    </Form>
     )
 
     }

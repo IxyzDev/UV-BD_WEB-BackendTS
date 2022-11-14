@@ -25,7 +25,6 @@ export function ShowPublications() {
   }, []);
   return(
     <div className="App">
-    <h1>
       {result?.map((value: resultProps) => {
         return (
           <Card style={{width: '30rem'}}  key={value.idPublicacion}>
@@ -43,7 +42,6 @@ export function ShowPublications() {
           </Card>
         );
       })}
-    </h1>
   </div>
   )
 }

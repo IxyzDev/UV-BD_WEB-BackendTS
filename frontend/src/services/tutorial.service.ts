@@ -1,5 +1,6 @@
 import http from "../http-common";
 import { resultProps } from "../interfaces/Publications";
+import axios from "axios"
 
 class TutorialDataService {
   getAll() {
@@ -11,7 +12,13 @@ class TutorialDataService {
   }
 
   create(data: resultProps) {
-    return http.post<resultProps>("/publicacion/crear", data);
+    console.log(data)
+    axios.post( `http://localhost:3000/publicacion/crear`, data,
+            { 
+                headers: { 'Content-Type': 'application/json' },
+            } 
+        ).then(resultado => console.log(resultado));
+    //return http.post<resultProps>("/publicacion/crear", data);
   }
 
   update(data: resultProps, idPublicacion: any) {

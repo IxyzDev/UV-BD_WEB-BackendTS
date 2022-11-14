@@ -55,6 +55,7 @@ export const parseDescripcionPublicacion = (DescripcionPublicacionFromRequest: a
 
 export const isRutUsuario = async (param: any): Promise<boolean> => {
   const RutUsuario = await usuario.findByPk(param).then((resultado: any) => {
+    console.log("parametro", param)
     if (resultado == null) {
       return false;
     }
