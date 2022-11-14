@@ -1,7 +1,7 @@
 //import Fetching from "../data/axios"
 import { Button, Card, Image } from "react-bootstrap"
 import axios from "axios"
-import { resultProps } from "../interfaces/Show_Publications";
+import { resultProps } from "../interfaces/Publications";
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,7 +11,7 @@ export function ShowPublications() {
   const api = async () => {
       axios({
         method: 'get',
-        url: 'http://localhost:3000/publicacion/read',
+        url: 'http://localhost:3000/publicacion/mostrar',
       })
       .then(function (response:any) {
         setResult(response?.data)
@@ -25,7 +25,6 @@ export function ShowPublications() {
   }, []);
   return(
     <div className="App">
-    <h1>
       {result?.map((value: resultProps) => {
         return (
           <Card style={{width: '30rem'}}  key={value.idPublicacion}>
@@ -43,7 +42,6 @@ export function ShowPublications() {
           </Card>
         );
       })}
-    </h1>
   </div>
   )
 }
