@@ -88,7 +88,6 @@ export const deletePublicacion= async (object: any) => {
 }
 
 export const VerifUserXProducto =  async (param: any): Promise<boolean> => {
-  console.log(param)
   const verifRut = await v.isRutUsuario(param.rutUsuario)
   const verifId = await v.isIdProducto(param.idProducto)
   if (!verifRut) {

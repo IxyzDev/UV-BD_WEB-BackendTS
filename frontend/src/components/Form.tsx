@@ -90,7 +90,6 @@ export default class AddTutorial extends Component<Props, State> {
     }
 
     onChangePrecio(e: ChangeEvent<HTMLInputElement>) {
-        console.log(e.target.value, e.target.valueAsNumber)
         this.setState({
           precioPublicacion: e.target.valueAsNumber
         });
@@ -120,6 +119,7 @@ export default class AddTutorial extends Component<Props, State> {
       };
       console.log(data)
       TutorialDataService.create(data)
+      this.newTutorial()
         /*.then((response: any) => {
           this.setState({
             idPublicacion: response.data.idPublicacion,
@@ -143,9 +143,13 @@ export default class AddTutorial extends Component<Props, State> {
   
     newTutorial() {
       this.setState({
+        rutUsuario: "",
+        idProducto: "",
         idPublicacion: "",
         tituloPublicacion: "",
         descripcionPublicacion: "",
+        fotoPublicacion: "",
+        precioPublicacion: 0,
         published: false,
         submitted: false
       });
@@ -174,9 +178,9 @@ export default class AddTutorial extends Component<Props, State> {
                 </Form.Group>
                 <Form.Label>Estado Producto</Form.Label>
                 <Form.Select required value={estadoPublicacion} onChange={this.onChangeEstado} className="mb-3" aria-label="Default select example">
-                    <option value="1">Bueno</option>
-                    <option value="2">Malo</option>
-                    <option value="3">Medio</option>
+                    <option value="Bueno">Bueno</option>
+                    <option value="Intermedio">Intermedio</option>
+                    <option value="Malo">Malo</option>
                 </Form.Select>
                 <Form.Label>Precio Producto</Form.Label>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
