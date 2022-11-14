@@ -1,25 +1,4 @@
-// Mostrar ordenado por título de publicación, título publicación, descripción publicación y precio publicación, que pertenezcan a los tipos de producto entregados
 
-	select p.tituloPublicacion, p.descripcionPublicacion, p.precioPublicacion 
-from Publicaciones as p join Productos as pr
-where pr.tipoProducto in (‘Tipos de productos entregados’)
-group by p.tituloPublicacion
-
-// Mostrar ordenado por título de gestion, id admin, título gestión, descripción gestión todos los administradores que han hecho una gestión
-
-select ad.idAdmin, g.tituloGestion, g.descripcionGestion 
-from Administradors as ad join Gestions as g
-where g.idAdmin = any ad.admin
-	group by g.tituloGestion
-
-// Mostrar ordenado por título de publicación, título publicación, nombre usuario nombre de producto, de usuarios que hayan hecho una publicación
-
-	select pu.tituloPublicacion, us.nombreUsuario, pr.nombreProducto
-	from Usuarios as us join(
-            Productos as pr join
-	Publicaciones as pu where 
-	us.rutUsuario = any pu.rutUsuario) as prpu
-	group by prpu.tituloPublicacion
 
 // Mostrar ordenado por tipo producto, nombre producto, marca producto, todos los productos que no tengan sección
 
